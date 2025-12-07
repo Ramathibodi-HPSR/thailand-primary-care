@@ -28,11 +28,13 @@ HF_REPO_TYPE = "dataset"
 HF_PRIMARY_CARE_FILE = "hospitals_confirmed.csv"
 HF_SUBDIST_FILE = "rtsd_pat.geojson"
 HF_POP_RASTER_FILE = "tha_ppp_2020_UNadj_constrained.tif"
+HF_COVERAGE_FILE = "coverage.parquet"
 
 # These will be filled by resolve_data_paths()
 PRIMARY_CARE_PATH: Path | None = None
 SUBDISTRICT_PATH: Path | None = None
 POP_RASTER_PATH: Path | None = None
+COVERAGE_PATH: Path | None = None
 
 ROOT = Path(__file__).resolve().parent
 CACHE_DIR = ROOT / "cache"
@@ -96,7 +98,15 @@ def resolve_data_paths():
         )
     )
 
-    return PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH
+    COVERAGE_PATH = Path(
+        hf_hub_download(
+            repo_id=HF_REPO_ID,
+            filename=HF_COVERAGE_FILE,
+            repo_type=HF_REPO_TYPE,
+        )
+    )
+
+    return PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH, COVERAGE_PATH
 
 @st.cache_resource(show_spinner=True)
 def load_primary_care(path: Path) -> gpd.GeoDataFrame:
@@ -338,7 +348,7 @@ def preload():
     resolve_data_paths()
 
     gdf_pc_4326 = load_primary_care_with_admin(PRIMARY_CARE_PATH, SUBDISTRICT_PATH)
-    df_cov = load_coverage_with_disk_cache(tuple(RADII_KM))
+    df_cov = pd.read_parquet(COVERAGE_PATH)
     return gdf_pc_4326, df_cov
 
 # -------------------------

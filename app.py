@@ -1,7 +1,11 @@
 import json, time
+import os
+from dotenv import load_dotenv
+load_dotenv()
 from pathlib import Path
+from tqdm import tqdm
 
-from huggingface_hub import hf_hub_download
+from huggingface_hub import HfApi, hf_hub_download
 
 import geopandas as gpd
 import numpy as np
@@ -10,6 +14,7 @@ import rasterio
 from rasterio.warp import calculate_default_transform, reproject, Resampling
 from rasterio.features import rasterize
 from rasterio.enums import MergeAlg
+from rasterio.transform import from_origin
 
 import plotly.express as px
 import plotly.graph_objects as go
@@ -29,22 +34,30 @@ HF_PRIMARY_CARE_FILE = "hospitals_confirmed.csv"
 HF_SUBDIST_FILE = "rtsd_pat.geojson"
 HF_POP_RASTER_FILE = "tha_ppp_2020_UNadj_constrained.tif"
 HF_COVERAGE_FILE = "coverage.parquet"
+HF_UPDATEDMETA_FILE = "updated_meta.json"
 
 # These will be filled by resolve_data_paths()
 PRIMARY_CARE_PATH: Path | None = None
 SUBDISTRICT_PATH: Path | None = None
 POP_RASTER_PATH: Path | None = None
 COVERAGE_PATH: Path | None = None
+UPDATEDMETA_PATH: Path | None = None
+
+token = os.getenv("HUGGINGFACE_HUB_TOKEN")
+if token is None:
+    raise RuntimeError("Please run `huggingface-cli login` or set HUGGINGFACE_HUB_TOKEN")
+api = HfApi(token=token)
+
 
 ROOT = Path(__file__).resolve().parent
 CACHE_DIR = ROOT / "cache"
 CACHE_DIR.mkdir(exist_ok=True)
 
-COV_DATA_PATH = CACHE_DIR / "coverage.parquet"
-COV_META_PATH = CACHE_DIR / "coverage_meta.json"
+LOCAL_COVERAGE_PATH = CACHE_DIR / "coverage.parquet"
+LOCAL_META_PATH = CACHE_DIR / "updated_meta.json"
 
 # Radii (km) for precomputation
-RADII_KM = [round(i * 0.1, 1) for i in range(1, 101)]
+RADII_KM = RADII_KM = [round(x * 0.1, 1) for x in range(1, 101)]
 
 # Projected CRS for Thailand (meters)
 PROJECTED_CRS = "EPSG:32647"
@@ -70,9 +83,9 @@ LOGO3_LINK = "https://www.nhso.go.th/"
 def resolve_data_paths():
     """
     Download data files from HuggingFace (if not already cached)
-    and set global paths so the rest of the code works unchanged.
+    and set global paths.
     """
-    global PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH, COVERAGE_PATH
+    global PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH, COVERAGE_PATH, UPDATEDMETA_PATH
 
     PRIMARY_CARE_PATH = Path(
         hf_hub_download(
@@ -106,7 +119,15 @@ def resolve_data_paths():
         )
     )
 
-    return PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH, COVERAGE_PATH
+    UPDATEDMETA_PATH = Path(
+        hf_hub_download(
+            repo_id=HF_REPO_ID,
+            filename=HF_UPDATEDMETA_FILE,
+            repo_type=HF_REPO_TYPE,
+        )
+    )
+
+    return PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH, COVERAGE_PATH, UPDATEDMETA_PATH
 
 @st.cache_resource(show_spinner=True)
 def load_primary_care(path: Path) -> gpd.GeoDataFrame:
@@ -207,17 +228,6 @@ def load_pop_raster_projected(path: Path):
     nodata = src.nodata
     return dst_arr, transform, rasterio.crs.CRS.from_string(dst_crs), nodata
 
-def file_signature(path: Path) -> dict:
-    """Lightweight 'fingerprint' of a file for cache invalidation."""
-    if not path.exists():
-        return {"exists": False}
-    stat = path.stat()
-    return {
-        "exists": True,
-        "size": stat.st_size,
-        "mtime": stat.st_mtime,  # last modified
-    }
-
 # -------------------------
 # PRECOMPUTE COVERAGE (with overlap adjustment)
 # -------------------------
@@ -234,52 +244,83 @@ def precompute_coverage(radii_km: tuple[float, ...]) -> pd.DataFrame:
       - Each cell's population is divided by overlap_count
       - For each PC, sum adjusted_pop within its own buffer
     """
+
+    # --- load data ---
     gdf_pc_4326 = load_primary_care_with_admin(PRIMARY_CARE_PATH, SUBDISTRICT_PATH)
     pop_arr, transform, pop_crs, pop_nodata = load_pop_raster_projected(POP_RASTER_PATH)
 
     gdf_pc_proj = gdf_pc_4326.to_crs(pop_crs)
+    gdf_pc_proj = gdf_pc_proj[:100]
+
+    # base grid = use pop raster itself
+    base_shape = pop_arr.shape
+    base_transform = transform
+
+    # --- prepare population array ---
+    pop_float = pop_arr.astype("float32")
 
     if pop_nodata is not None:
         valid_mask = pop_arr != pop_nodata
     else:
         valid_mask = np.ones_like(pop_arr, dtype=bool)
 
-    records = []
+    # set nodata to 0
+    pop_float[~valid_mask] = 0.0
 
-    for radius in radii_km:
-        radius_m = radius * 1000.0
-        buffers = gdf_pc_proj.geometry.buffer(radius_m)
+    buffer_arrays = {}
+    buffer_arrays["pop_total"] = pop_float
 
-        # Overlap-count raster
-        overlap_arr = rasterize(
-            shapes=((geom, 1) for geom in buffers),
-            out_shape=pop_arr.shape,
-            transform=transform,
-            fill=0,
+    records: list[dict] = []
+
+    # --- loop over radii ---
+    for r in radii_km:
+        radius_m = r * 1000.0
+
+        # ชื่อ column buffer สำหรับรัศมีนี้
+        buffer_col = f"buffer_{int(radius_m)}m"
+
+        # สร้าง buffer geometry ต่อ facility
+        gdf_pc_proj[buffer_col] = gdf_pc_proj.geometry.buffer(radius_m)
+
+        # 1) buffer_count raster: จำนวน facility ที่ทับแต่ละ cell
+        shapes_all = ((geom, 1) for geom in gdf_pc_proj[buffer_col])
+        buffer_count = rasterize(
+            shapes_all,
+            out_shape=base_shape,
+            transform=base_transform,
+            fill=0,               # นอก buffer = 0 สำคัญมาก
             all_touched=False,
             merge_alg=MergeAlg.add,
             dtype="int16",
         )
+        buffer_arrays[buffer_col] = buffer_count
 
-        # Weights = 1/n for cells in n buffers
-        weights = np.zeros_like(pop_arr, dtype="float32")
-        mask_overlap = overlap_arr > 0
+        # 2) adjusted_pop = pop_total / buffer_count (เฉพาะ cell ที่ buffer_count > 0)
+        adjusted = np.zeros_like(pop_float, dtype="float32")
+        mask_buf = (buffer_count > 0) & valid_mask
         with np.errstate(divide="ignore", invalid="ignore"):
-            weights[mask_overlap] = 1.0 / overlap_arr[mask_overlap]
+            adjusted[mask_buf] = pop_float[mask_buf] / buffer_count[mask_buf]
 
-        adjusted_pop = pop_arr.astype("float32") * weights
-        adjusted_pop[~valid_mask] = 0
+        # เก็บไว้เผื่อใช้ต่อ
+        # adj_key = f"pop_adj_{int(radius_m)}m"
+        # buffer_arrays[adj_key] = adjusted
 
-        for row, geom in zip(gdf_pc_proj.itertuples(), buffers):
-            mask_arr = rasterize(
-                [(geom, 1)],
-                out_shape=pop_arr.shape,
-                transform=transform,
+        # 3) loop ต่อ facility → mask แล้ว sum adjusted_pop
+        for row in gdf_pc_proj.itertuples():
+            fac_geom = getattr(row, buffer_col)
+
+            # mask raster ของ facility เดียว
+            fac_mask = rasterize(
+                [(fac_geom, 1)],
+                out_shape=base_shape,
+                transform=base_transform,
                 fill=0,
                 all_touched=False,
                 dtype="uint8",
             )
-            facility_pop = float(adjusted_pop[(mask_arr == 1) & valid_mask].sum())
+
+            # sum adjusted_pop เฉพาะที่ fac_mask == 1
+            fac_pop = float(adjusted[(fac_mask == 1)].sum())
 
             records.append(
                 {
@@ -288,8 +329,8 @@ def precompute_coverage(radii_km: tuple[float, ...]) -> pd.DataFrame:
                     "prov_name": getattr(row, "prov_name", None),
                     "amp_name": getattr(row, "amp_name", None),
                     "tam_name": getattr(row, "tam_name", None),
-                    "radius_km": radius,
-                    "pop": facility_pop,
+                    "radius_km": float(r),
+                    "pop": fac_pop,
                 }
             )
 
@@ -303,52 +344,77 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
     Recompute and save if inputs changed.
     """
     # 1) Build current metadata (what inputs we are using now)
-    meta_current = {
-        "pc": file_signature(PRIMARY_CARE_PATH),
-        "pop": file_signature(POP_RASTER_PATH),
-        "radii_km": list(radii_km),
-        "version": 1,               # bump if you change algorithm
-        "generated_at": time.time()
-    }
+    meta_current = json.loads(LOCAL_META_PATH.read_text())
+    version = meta_current.get("version")
 
     # 2) Try reading existing meta + data
-    if COV_DATA_PATH.exists() and COV_META_PATH.exists():
+    if UPDATEDMETA_PATH.exists():
         try:
-            meta_old = json.loads(COV_META_PATH.read_text())
+            meta_old = json.loads(UPDATEDMETA_PATH.read_text())
         except Exception:
             meta_old = None
+    else:
+        meta_old = None
 
         # If metadata matches → reuse cached parquet
-        if (
-            meta_old
-            and meta_old.get("pc") == meta_current["pc"]
-            and meta_old.get("pop") == meta_current["pop"]
-            and meta_old.get("radii_km") == meta_current["radii_km"]
-            and meta_old.get("version") == meta_current["version"]
+    if (
+        meta_old
+        and meta_old.get("version") == version
         ):
-            df_cov = pd.read_parquet(COV_DATA_PATH)
-            return df_cov
+        
+        print("No new version — using existing coverage.parquet")
+        df_cov = pd.read_parquet(COVERAGE_PATH)
+        
+    else:
+        # 3) Cache miss → run heavy precompute, then save
+        print("Find new version — recomputing coverage…")
+        df_cov = precompute_coverage(radii_km)
 
-    # 3) Cache miss → run heavy precompute, then save
-    df_cov = precompute_coverage(radii_km)
+        df_cov.to_parquet(LOCAL_COVERAGE_PATH, index=False)
+        
+        # 5) Upload new coverage.parquet to HuggingFace
+        print("Uploading coverage.parquet to HuggingFace…")
 
-    df_cov.to_parquet(COV_DATA_PATH, index=False)
-    COV_META_PATH.write_text(json.dumps(meta_current, indent=2))
+        api.upload_file(
+            path_or_fileobj=str(LOCAL_COVERAGE_PATH),
+            path_in_repo="coverage.parquet",
+            repo_id=HF_REPO_ID,
+            repo_type=HF_REPO_TYPE,
+        )
+        
+        meta_current = {
+            "version": version,
+            "updated_at": time.time()
+        }
+        LOCAL_META_PATH.write_text(json.dumps(meta_current, indent=2))
+
+        # Upload updated_meta.json
+        print("Uploading updated_meta.json…")
+
+        api.upload_file(
+            path_or_fileobj=str(LOCAL_META_PATH),
+            path_in_repo="updated_meta.json",
+            repo_id=HF_REPO_ID,
+            repo_type=HF_REPO_TYPE,
+        )
+
+        print("Upload complete.")
 
     return df_cov
 
 @st.cache_resource(show_spinner=True)
 def preload():
     """
-    Load all base data for the app.
-    - gdf_pc_4326: primary care points + admin columns
-    - df_cov: overlap-adjusted coverage table (possibly from disk cache)
+    Load all base data for the app, tied to a specific coverage revision.
+    If coverage_revision changes (on HF), Streamlit reruns this.
     """
-    # Ensure data paths are resolved (download if needed)
+    # Ensure base vector data paths exist
     resolve_data_paths()
 
+    # Load primary care & coverage
     gdf_pc_4326 = load_primary_care_with_admin(PRIMARY_CARE_PATH, SUBDISTRICT_PATH)
-    df_cov = pd.read_parquet(COVERAGE_PATH)
+    df_cov = load_coverage_with_disk_cache(tuple(RADII_KM))
+
     return gdf_pc_4326, df_cov
 
 # -------------------------
@@ -476,7 +542,7 @@ def main():
         """
     )
 
-    # Load data
+    # --- Load data tied to this revision ---
     gdf_pc_4326, df_cov = preload()
     
     # Build admin-aggregated tables
@@ -773,12 +839,12 @@ def main():
             - Green: Doctor Clinic
             """)
 
-            # with st.expander("Population by facility (current radius)"):
-            #     st.dataframe(
-            #         df_current[["pc_id", "pc_name", "radius_km", "pop"]]
-            #         .sort_values("pop", ascending=False)
-            #         .reset_index(drop=True)
-            #     )
+            with st.expander("Population by facility (current radius)"):
+                st.dataframe(
+                    df_current[["pc_id", "pc_name", "radius_km", "pop"]]
+                    .sort_values("pop", ascending=False)
+                    .reset_index(drop=True)
+                )
 
         # ---- Left column: map (uses current_radius_km) ----
         with col_map:
@@ -798,14 +864,6 @@ def main():
         
         # --- Left: citation text ---
         with col_credit:
-            
-            if COV_META_PATH.exists():
-                meta = json.loads(COV_META_PATH.read_text())
-                ts = time.strftime("%Y-%m-%d %H:%M", time.localtime(meta["generated_at"]))
-                st.caption(
-                    f"Coverage precomputed on {ts}, "
-                    f"version {meta.get('version', '?')}."
-                )
 
             st.markdown(
                 """
@@ -864,6 +922,9 @@ def main():
                         st.markdown(html, unsafe_allow_html=True)
                     else:
                         st.write("Logo Not Found")
+                        
+    if st.button("Test precompute_coverage"):
+        _ = precompute_coverage((10,))
 
 if __name__ == "__main__":
     main()

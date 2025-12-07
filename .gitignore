@@ -7,11 +7,11 @@ __pycache__/
 # Virtual env
 .venv/
 venv/
+.env
 
 # Streamlit & cache
-.cache/
-cache/
 .streamlit/
+*.parquet
 
 # OS junk
 .DS_Store

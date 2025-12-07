@@ -72,7 +72,7 @@ def resolve_data_paths():
     Download data files from HuggingFace (if not already cached)
     and set global paths so the rest of the code works unchanged.
     """
-    global PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH
+    global PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH, COVERAGE_PATH
 
     PRIMARY_CARE_PATH = Path(
         hf_hub_download(

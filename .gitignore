@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+venv/
+
+# Streamlit & cache
+.cache/
+cache/
+.streamlit/
+
+# OS junk
+.DS_Store
+
+# Large data (we now use HuggingFace instead)
+data/

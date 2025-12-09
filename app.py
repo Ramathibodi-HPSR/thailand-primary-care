@@ -545,6 +545,14 @@ def main():
         """
     )
 
+    # --- Cache Management ---
+    st.subheader("Reload the coverage database")
+
+    if st.button("Reload"):
+        load_coverage_with_disk_cache.clear()
+        st.success("Coverage cache cleared successfully.")
+        st.rerun()
+
     # --- Load data tied to this revision ---
     gdf_pc_4326, df_cov = preload()
     

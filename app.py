@@ -573,6 +573,7 @@ def main():
     
     # Build admin-aggregated tables
     with st.spinner("Creating the dashboard..."):
+        st.markdown("Import Successed.")
         df_total = (
             df_cov.groupby("radius_km")["pop"]
             .sum()

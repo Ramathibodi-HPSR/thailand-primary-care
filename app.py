@@ -344,7 +344,18 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
     Recompute and save if inputs changed.
     """
     # 1) Build current metadata (what inputs we are using now)
-    _, _, _, coverage_path, updatedmeta_path = resolve_data_paths()
+    coverage_path = hf_hub_download(
+        repo_id=HF_REPO_ID,
+        filename=HF_UPDATEDMETA_FILE,
+        repo_type=HF_REPO_TYPE,
+    )
+    
+    updatedmeta_path = hf_hub_download(
+        repo_id=HF_REPO_ID,
+        filename=HF_UPDATEDMETA_FILE,
+        repo_type=HF_REPO_TYPE,
+    )
+
     meta_current = json.loads(LOCAL_META_PATH.read_text())
     version = meta_current.get("version")
 
@@ -411,7 +422,17 @@ def preload():
     """
     
     # Ensure base vector data paths exist
-    primary_care_path, subdistrict_path, _, _, _ = resolve_data_paths()
+    primary_care_path = hf_hub_download(
+        repo_id=HF_REPO_ID,
+        filename=HF_PRIMARY_CARE_FILE,
+        repo_type=HF_REPO_TYPE,
+    )
+    
+    subdistrict_path = hf_hub_download(
+        repo_id=HF_REPO_ID,
+        filename=HF_SUBDIST_FILE,
+        repo_type=HF_REPO_TYPE,
+    )
 
     # Load primary care & coverage
     with st.spinner("Creating the dashboard..."):

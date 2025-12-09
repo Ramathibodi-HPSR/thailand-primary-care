@@ -346,7 +346,7 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
     # 1) Build current metadata (what inputs we are using now)
     coverage_path = hf_hub_download(
         repo_id=HF_REPO_ID,
-        filename=HF_UPDATEDMETA_FILE,
+        filename=HF_COVERAGE_FILE,
         repo_type=HF_REPO_TYPE,
     )
     

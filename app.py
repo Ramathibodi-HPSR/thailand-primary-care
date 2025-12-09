@@ -86,45 +86,50 @@ def resolve_data_paths():
     and set global paths.
     """
     
-    PRIMARY_CARE_PATH = Path(
-        hf_hub_download(
-            repo_id=HF_REPO_ID,
-            filename=HF_PRIMARY_CARE_FILE,
-            repo_type=HF_REPO_TYPE,
+    with st.spinner("Downloading hospital data..."):
+        PRIMARY_CARE_PATH = Path(
+            hf_hub_download(
+                repo_id=HF_REPO_ID,
+                filename=HF_PRIMARY_CARE_FILE,
+                repo_type=HF_REPO_TYPE,
+            )
         )
-    )
 
-    SUBDISTRICT_PATH = Path(
-        hf_hub_download(
-            repo_id=HF_REPO_ID,
-            filename=HF_SUBDIST_FILE,
-            repo_type=HF_REPO_TYPE,
+    with st.spinner("Downloading map data..."):
+        SUBDISTRICT_PATH = Path(
+            hf_hub_download(
+                repo_id=HF_REPO_ID,
+                filename=HF_SUBDIST_FILE,
+                repo_type=HF_REPO_TYPE,
+            )
         )
-    )
 
-    POP_RASTER_PATH = Path(
-        hf_hub_download(
-            repo_id=HF_REPO_ID,
-            filename=HF_POP_RASTER_FILE,
-            repo_type=HF_REPO_TYPE,
+    with st.spinner("Downloading raster data..."):
+        POP_RASTER_PATH = Path(
+            hf_hub_download(
+                repo_id=HF_REPO_ID,
+                filename=HF_POP_RASTER_FILE,
+                repo_type=HF_REPO_TYPE,
+            )
         )
-    )
 
-    COVERAGE_PATH = Path(
-        hf_hub_download(
-            repo_id=HF_REPO_ID,
-            filename=HF_COVERAGE_FILE,
-            repo_type=HF_REPO_TYPE,
+    with st.spinner("Downloading coverage data..."):
+        COVERAGE_PATH = Path(
+            hf_hub_download(
+                repo_id=HF_REPO_ID,
+                filename=HF_COVERAGE_FILE,
+                repo_type=HF_REPO_TYPE,
+            )
         )
-    )
 
-    UPDATEDMETA_PATH = Path(
-        hf_hub_download(
-            repo_id=HF_REPO_ID,
-            filename=HF_UPDATEDMETA_FILE,
-            repo_type=HF_REPO_TYPE,
+    with st.spinner("Downloading version data..."):
+        UPDATEDMETA_PATH = Path(
+            hf_hub_download(
+                repo_id=HF_REPO_ID,
+                filename=HF_UPDATEDMETA_FILE,
+                repo_type=HF_REPO_TYPE,
+            )
         )
-    )
 
     return PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH, COVERAGE_PATH, UPDATEDMETA_PATH
 
@@ -412,8 +417,7 @@ def preload():
     """
     
     # Ensure base vector data paths exist
-    with st.spinner("Downloading data from database..."):
-        primary_care_path, subdistrict_path, _, _, _ = resolve_data_paths()
+    primary_care_path, subdistrict_path, _, _, _ = resolve_data_paths()
 
     # Load primary care & coverage
     with st.spinner("Creating the dashboard..."):

@@ -375,7 +375,7 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
         ):
         
         print("No new version — using existing coverage.parquet")
-        df_cov = pd.read_parquet(coverage_path)
+        df_cov = pd.read_parquet(Path(coverage_path))
         
     else:
         # 3) Cache miss → run heavy precompute, then save

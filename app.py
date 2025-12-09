@@ -85,8 +85,7 @@ def resolve_data_paths():
     Download data files from HuggingFace (if not already cached)
     and set global paths.
     """
-    global PRIMARY_CARE_PATH, SUBDISTRICT_PATH, POP_RASTER_PATH, COVERAGE_PATH, UPDATEDMETA_PATH
-
+    
     PRIMARY_CARE_PATH = Path(
         hf_hub_download(
             repo_id=HF_REPO_ID,
@@ -176,8 +175,9 @@ def load_primary_care_with_admin(pc_path: Path, admin_path: Path) -> gpd.GeoData
     Primary care points + attached province/district/subdistrict
     via spatial join with subdistrict polygons.
     """
+    _, subdistrict_path, _, _, _ = resolve_data_paths()
     gdf_pc = load_primary_care(pc_path)
-    gdf_adm = load_admin_polygons(SUBDISTRICT_PATH, _target_crs=gdf_pc.crs)
+    gdf_adm = load_admin_polygons(subdistrict_path, _target_crs=gdf_pc.crs)
 
     gdf_join = gpd.sjoin(
         gdf_pc,
@@ -246,8 +246,9 @@ def precompute_coverage(radii_km: tuple[float, ...]) -> pd.DataFrame:
     """
 
     # --- load data ---
-    gdf_pc_4326 = load_primary_care_with_admin(PRIMARY_CARE_PATH, SUBDISTRICT_PATH)
-    pop_arr, transform, pop_crs, pop_nodata = load_pop_raster_projected(POP_RASTER_PATH)
+    primary_care_path, subdistrict_path, pop_raster_path, _, _ = resolve_data_paths()
+    gdf_pc_4326 = load_primary_care_with_admin(primary_care_path, subdistrict_path)
+    pop_arr, transform, pop_crs, pop_nodata = load_pop_raster_projected(pop_raster_path)
 
     gdf_pc_proj = gdf_pc_4326.to_crs(pop_crs)
     gdf_pc_proj = gdf_pc_proj[:100]
@@ -344,13 +345,14 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
     Recompute and save if inputs changed.
     """
     # 1) Build current metadata (what inputs we are using now)
+    _, _, _, coverage_path, updatedmeta_path = resolve_data_paths()
     meta_current = json.loads(LOCAL_META_PATH.read_text())
     version = meta_current.get("version")
 
     # 2) Try reading existing meta + data
-    if UPDATEDMETA_PATH.exists():
+    if updatedmeta_path.exists():
         try:
-            meta_old = json.loads(UPDATEDMETA_PATH.read_text())
+            meta_old = json.loads(updatedmeta_path.read_text())
         except Exception:
             meta_old = None
     else:
@@ -363,7 +365,7 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
         ):
         
         print("No new version — using existing coverage.parquet")
-        df_cov = pd.read_parquet(COVERAGE_PATH)
+        df_cov = pd.read_parquet(coverage_path)
         
     else:
         # 3) Cache miss → run heavy precompute, then save
@@ -410,12 +412,11 @@ def preload():
     """
     # Ensure base vector data paths exist
     st.write("\nStep 1: resolve_data_paths() ...")
-    resolve_data_paths()
+    primary_care_path, subdistrict_path, _, _, _ = resolve_data_paths()
 
     # Load primary care & coverage
     st.write("\nStep 2: load_primary_care_with_admin() ...")
-    st.write(f"{PRIMARY_CARE_PATH}")
-    gdf_pc_4326 = load_primary_care_with_admin(PRIMARY_CARE_PATH, SUBDISTRICT_PATH)
+    gdf_pc_4326 = load_primary_care_with_admin(primary_care_path, subdistrict_path)
     st.write("\nPC loaded:", gdf_pc_4326.shape)
     
     st.write("\nStep 3: load_coverage_with_disk_cache() ...")

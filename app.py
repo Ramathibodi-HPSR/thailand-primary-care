@@ -409,11 +409,17 @@ def preload():
     If coverage_revision changes (on HF), Streamlit reruns this.
     """
     # Ensure base vector data paths exist
+    st.write("Step 1: resolve_data_paths() ...")
     resolve_data_paths()
 
     # Load primary care & coverage
+    st.write("Step 2: load_primary_care_with_admin() ...")
     gdf_pc_4326 = load_primary_care_with_admin(PRIMARY_CARE_PATH, SUBDISTRICT_PATH)
+    st.write("PC loaded:", gdf_pc_4326.shape)
+    
+    st.write("Step 3: load_coverage_with_disk_cache() ...")
     df_cov = load_coverage_with_disk_cache(tuple(RADII_KM))
+    st.write("Coverage loaded:", df_cov.shape)
 
     return gdf_pc_4326, df_cov
 

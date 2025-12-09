@@ -402,7 +402,7 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
 
     return df_cov
 
-@st.cache_resource(show_spinner=True)
+@st.cache_resource(show_spinner=False)
 def preload():
     """
     Load all base data for the app, tied to a specific coverage revision.

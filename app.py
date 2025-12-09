@@ -435,7 +435,7 @@ def preload():
     )
 
     # Load primary care & coverage
-    with st.spinner("Creating the dashboard..."):
+    with st.spinner("Download the database..."):
         gdf_pc_4326 = load_primary_care_with_admin(primary_care_path, subdistrict_path)
         df_cov = load_coverage_with_disk_cache(tuple(RADII_KM))
     
@@ -572,30 +572,31 @@ def main():
     gdf_pc_4326, df_cov = preload()
     
     # Build admin-aggregated tables
-    df_total = (
-        df_cov.groupby("radius_km")["pop"]
-        .sum()
-        .reset_index()
-        .rename(columns={"pop": "total_pop"})
-    )
+    with st.spinner("Creating the dashboard..."):
+        df_total = (
+            df_cov.groupby("radius_km")["pop"]
+            .sum()
+            .reset_index()
+            .rename(columns={"pop": "total_pop"})
+        )
 
-    df_prov = (
-        df_cov.groupby(["radius_km", "prov_name"], dropna=False)["pop"]
-        .sum()
-        .reset_index()
-    )
-    df_amp = (
-        df_cov.groupby(["radius_km", "prov_name", "amp_name"], dropna=False)["pop"]
-        .sum()
-        .reset_index()
-    )
-    df_tam = (
-        df_cov.groupby(["radius_km", "prov_name", "amp_name", "tam_name"], dropna=False)[
-            "pop"
-        ]
-        .sum()
-        .reset_index()
-    )
+        df_prov = (
+            df_cov.groupby(["radius_km", "prov_name"], dropna=False)["pop"]
+            .sum()
+            .reset_index()
+        )
+        df_amp = (
+            df_cov.groupby(["radius_km", "prov_name", "amp_name"], dropna=False)["pop"]
+            .sum()
+            .reset_index()
+        )
+        df_tam = (
+            df_cov.groupby(["radius_km", "prov_name", "amp_name", "tam_name"], dropna=False)[
+                "pop"
+            ]
+            .sum()
+            .reset_index()
+        )
 
     # ---------------------
     # TOP ROW: NATIONAL + ADMIN TABS

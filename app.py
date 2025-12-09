@@ -424,6 +424,8 @@ def preload():
         gdf_pc_4326 = load_primary_care_with_admin(primary_care_path, subdistrict_path)
         df_cov = load_coverage_with_disk_cache(tuple(RADII_KM))
     
+    print("Downloaded database completely.")
+    
     return gdf_pc_4326, df_cov
 
 # -------------------------

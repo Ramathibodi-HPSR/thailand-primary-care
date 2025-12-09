@@ -404,7 +404,7 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
 
     return df_cov
 
-@st.cache_resource(show_spinner=True)
+@st.cache_resource
 def preload():
     """
     Load all base data for the app, tied to a specific coverage revision.
@@ -412,11 +412,13 @@ def preload():
     """
     
     # Ensure base vector data paths exist
-    primary_care_path, subdistrict_path, _, _, _ = resolve_data_paths()
+    with st.spinner("Downloading data from database..."):
+        primary_care_path, subdistrict_path, _, _, _ = resolve_data_paths()
 
     # Load primary care & coverage
-    gdf_pc_4326 = load_primary_care_with_admin(primary_care_path, subdistrict_path)
-    df_cov = load_coverage_with_disk_cache(tuple(RADII_KM))
+    with st.spinner("Creating the dashboard..."):
+        gdf_pc_4326 = load_primary_care_with_admin(primary_care_path, subdistrict_path)
+        df_cov = load_coverage_with_disk_cache(tuple(RADII_KM))
     
     return gdf_pc_4326, df_cov
 
@@ -544,14 +546,6 @@ def main():
         Coverage is estimated using a gridded population model (100m-resolution) and distance-based service radii around all primary care facilities.
         """
     )
-
-    # --- Cache Management ---
-    st.subheader("Reload the coverage database")
-
-    if st.button("Reload"):
-        load_coverage_with_disk_cache.clear()
-        st.success("Coverage cache cleared successfully.")
-        st.rerun()
 
     # --- Load data tied to this revision ---
     gdf_pc_4326, df_cov = preload()
@@ -934,8 +928,14 @@ def main():
                     else:
                         st.write("Logo Not Found")
                         
-    if st.button("Test precompute_coverage"):
-        _ = precompute_coverage((10,))
+    # --- Cache Management ---
+    st.markdown("### Reload the coverage database")
+
+    if st.button("Reload coverage"):
+        with st.spinner("Clearing cache and reloading coverage..."):
+            load_coverage_with_disk_cache.clear()
+        st.success("Cache cleared. Reloading…")
+        st.rerun()
 
 if __name__ == "__main__":
     main()

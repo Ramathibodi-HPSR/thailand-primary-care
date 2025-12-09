@@ -374,43 +374,43 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
         and meta_old.get("version") == version
         ):
         
-        print("No new version — using existing coverage.parquet")
-        df_cov = pd.read_parquet(Path(coverage_path))
+        with st.spinner("No new version — using existing coverage.parquet..."):
+            df_cov = pd.read_parquet(Path(coverage_path))
         
     else:
         # 3) Cache miss → run heavy precompute, then save
-        print("Find new version — recomputing coverage…")
-        df_cov = precompute_coverage(radii_km)
+        with st.spinner("Find new version — recomputing coverage…"):
+            df_cov = precompute_coverage(radii_km)
 
-        df_cov.to_parquet(LOCAL_COVERAGE_PATH, index=False)
-        
-        # 5) Upload new coverage.parquet to HuggingFace
-        print("Uploading coverage.parquet to HuggingFace…")
+            df_cov.to_parquet(LOCAL_COVERAGE_PATH, index=False)
+            
+            # 5) Upload new coverage.parquet to HuggingFace
+            print("Uploading coverage.parquet to HuggingFace…")
 
-        api.upload_file(
-            path_or_fileobj=str(LOCAL_COVERAGE_PATH),
-            path_in_repo="coverage.parquet",
-            repo_id=HF_REPO_ID,
-            repo_type=HF_REPO_TYPE,
-        )
-        
-        meta_current = {
-            "version": version,
-            "updated_at": time.time()
-        }
-        LOCAL_META_PATH.write_text(json.dumps(meta_current, indent=2))
+            api.upload_file(
+                path_or_fileobj=str(LOCAL_COVERAGE_PATH),
+                path_in_repo="coverage.parquet",
+                repo_id=HF_REPO_ID,
+                repo_type=HF_REPO_TYPE,
+            )
+            
+            meta_current = {
+                "version": version,
+                "updated_at": time.time()
+            }
+            LOCAL_META_PATH.write_text(json.dumps(meta_current, indent=2))
 
-        # Upload updated_meta.json
-        print("Uploading updated_meta.json…")
+            # Upload updated_meta.json
+            print("Uploading updated_meta.json…")
 
-        api.upload_file(
-            path_or_fileobj=str(LOCAL_META_PATH),
-            path_in_repo="updated_meta.json",
-            repo_id=HF_REPO_ID,
-            repo_type=HF_REPO_TYPE,
-        )
+            api.upload_file(
+                path_or_fileobj=str(LOCAL_META_PATH),
+                path_in_repo="updated_meta.json",
+                repo_id=HF_REPO_ID,
+                repo_type=HF_REPO_TYPE,
+            )
 
-        print("Upload complete.")
+            print("Upload complete.")
 
     return df_cov
 

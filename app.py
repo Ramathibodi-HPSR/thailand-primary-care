@@ -105,13 +105,7 @@ def resolve_data_paths():
         )
 
     with st.spinner("Downloading raster data..."):
-        POP_RASTER_PATH = Path(
-            hf_hub_download(
-                repo_id=HF_REPO_ID,
-                filename=HF_POP_RASTER_FILE,
-                repo_type=HF_REPO_TYPE,
-            )
-        )
+        POP_RASTER_PATH = None
 
     with st.spinner("Downloading coverage data..."):
         COVERAGE_PATH = Path(

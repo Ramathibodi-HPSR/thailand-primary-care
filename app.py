@@ -414,6 +414,7 @@ def preload():
 
     # Load primary care & coverage
     st.write("\nStep 2: load_primary_care_with_admin() ...")
+    st.write(f"{PRIMARY_CARE_PATH}")
     gdf_pc_4326 = load_primary_care_with_admin(PRIMARY_CARE_PATH, SUBDISTRICT_PATH)
     st.write("\nPC loaded:", gdf_pc_4326.shape)
     

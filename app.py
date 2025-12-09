@@ -948,15 +948,6 @@ def main():
                         st.markdown(html, unsafe_allow_html=True)
                     else:
                         st.write("Logo Not Found")
-                        
-    # --- Cache Management ---
-    st.markdown("### Reload the coverage database")
-
-    if st.button("Reload coverage"):
-        with st.spinner("Clearing cache and reloading coverage..."):
-            load_coverage_with_disk_cache.clear()
-        st.success("Cache cleared. Reloading…")
-        st.rerun()
 
 if __name__ == "__main__":
     main()

@@ -31,7 +31,7 @@ import base64
 HF_REPO_ID = "psitthirat/thailand-primary-care"
 HF_REPO_TYPE = "dataset"
 HF_PRIMARY_CARE_FILE = "hospitals_confirmed.csv"
-HF_SUBDIST_FILE = "rtsd_pat.geojson"
+HF_SUBDIST_FILE = "rtsd_pat.parquet"
 HF_POP_RASTER_FILE = "tha_ppp_2020_UNadj_constrained.tif"
 HF_COVERAGE_FILE = "coverage.parquet"
 HF_UPDATEDMETA_FILE = "updated_meta.json"
@@ -153,7 +153,7 @@ def load_admin_polygons(path: Path, _target_crs="EPSG:4326"):
     Load subdistrict GeoJSON and rename admin columns.
     Streamlit will NOT hash _target_crs since it starts with underscore.
     """
-    gdf = gpd.read_file(path)
+    gdf = gpd.read_parquet(path)
     gdf = gdf.to_crs(_target_crs)
 
     rename_map = {

@@ -427,17 +427,20 @@ def preload():
         filename=HF_PRIMARY_CARE_FILE,
         repo_type=HF_REPO_TYPE,
     )
+    st.markdown("Primary care imported")
     
     subdistrict_path = hf_hub_download(
         repo_id=HF_REPO_ID,
         filename=HF_SUBDIST_FILE,
         repo_type=HF_REPO_TYPE,
     )
+    st.markdown("Subdistrict imported")
 
     # Load primary care & coverage
     with st.spinner("Downloading the database..."):
         gdf_pc_4326 = load_primary_care_with_admin(primary_care_path, subdistrict_path)
         df_cov = load_coverage_with_disk_cache(tuple(RADII_KM))
+        st.markdown("Coverage imported")
     
     print("Downloaded database completely.")
     

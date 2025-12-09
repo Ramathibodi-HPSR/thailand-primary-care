@@ -360,7 +360,7 @@ def load_coverage_with_disk_cache(radii_km: tuple[float, ...]) -> pd.DataFrame:
     version = meta_current.get("version")
 
     # 2) Try reading existing meta + data
-    if updatedmeta_path.exists():
+    if Path(updatedmeta_path).exists():
         try:
             meta_old = json.loads(updatedmeta_path.read_text())
         except Exception:

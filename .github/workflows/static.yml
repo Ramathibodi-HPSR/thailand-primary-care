@@ -33,6 +33,22 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
+          fetch-depth: 0
+      - name: Pull LFS files (force)
+        run: |
+          git lfs install
+          git lfs pull
+          git lfs ls-files
+      - name: Verify data files are real (not LFS pointers)
+        run: |
+          for f in hospitals_confirmed.csv coverage_lookup.json coverage_distance.json; do
+            echo "Checking $f"
+            head -n 2 "$f"
+            if head -n 1 "$f" | grep -q "git-lfs.github.com/spec"; then
+              echo "ERROR: $f is still an LFS pointer (not downloaded)."
+              exit 1
+            fi
+          done
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

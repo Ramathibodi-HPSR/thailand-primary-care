@@ -28,17 +28,25 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           lfs: true
           fetch-depth: 0
+
       - name: Pull LFS files (force)
         run: |
           git lfs install
           git lfs pull
           git lfs ls-files
+
       - name: Verify data files are real (not LFS pointers)
         run: |
           for f in hospitals_confirmed.csv coverage_lookup.json coverage_distance.json; do
@@ -49,13 +57,15 @@ jobs:
               exit 1
             fi
           done
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -1,3 +1,4 @@
-*.json filter=lfs diff=lfs merge=lfs -text
-*.csv filter=lfs diff=lfs merge=lfs -text
-*.parquet filter=lfs diff=lfs merge=lfs -text
+data/raw/*.parquet filter=lfs diff=lfs merge=lfs -text
+data/raw/*.csv filter=lfs diff=lfs merge=lfs -text
+dashboard/data/*.csv filter=lfs diff=lfs merge=lfs -text
+dashboard/data/coverage_lookup.json filter=lfs diff=lfs merge=lfs -text

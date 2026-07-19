@@ -1,0 +1,387 @@
+[
+  {
+    "province_code": "10",
+    "province_name_th": "กรุงเทพมหานคร",
+    "population": 10141325.717041016
+  },
+  {
+    "province_code": "11",
+    "province_name_th": "สมุทรปราการ",
+    "population": 2999936.298095703
+  },
+  {
+    "province_code": "12",
+    "province_name_th": "นนทบุรี",
+    "population": 1991466.3608398438
+  },
+  {
+    "province_code": "13",
+    "province_name_th": "ปทุมธานี",
+    "population": 2412811.4711914062
+  },
+  {
+    "province_code": "14",
+    "province_name_th": "พระนครศรีอยุธยา",
+    "population": 700428.3503417969
+  },
+  {
+    "province_code": "15",
+    "province_name_th": "อ่างทอง",
+    "population": 222708.91033935547
+  },
+  {
+    "province_code": "16",
+    "province_name_th": "ลพบุรี",
+    "population": 743242.8897705078
+  },
+  {
+    "province_code": "17",
+    "province_name_th": "สิงห์บุรี",
+    "population": 141933.58834838867
+  },
+  {
+    "province_code": "18",
+    "province_name_th": "ชัยนาท",
+    "population": 241928.33935546875
+  },
+  {
+    "province_code": "19",
+    "province_name_th": "สระบุรี",
+    "population": 835748.0512084961
+  },
+  {
+    "province_code": "20",
+    "province_name_th": "ชลบุรี",
+    "population": 2148731.7084960938
+  },
+  {
+    "province_code": "21",
+    "province_name_th": "ระยอง",
+    "population": 1188095.5485839844
+  },
+  {
+    "province_code": "22",
+    "province_name_th": "จันทบุรี",
+    "population": 458759.7204589844
+  },
+  {
+    "province_code": "23",
+    "province_name_th": "ตราด",
+    "population": 258359.634765625
+  },
+  {
+    "province_code": "24",
+    "province_name_th": "ฉะเชิงเทรา",
+    "population": 762273.4274597168
+  },
+  {
+    "province_code": "25",
+    "province_name_th": "ปราจีนบุรี",
+    "population": 684304.7423095703
+  },
+  {
+    "province_code": "26",
+    "province_name_th": "นครนายก",
+    "population": 232944.97827148438
+  },
+  {
+    "province_code": "27",
+    "province_name_th": "สระแก้ว",
+    "population": 584907.4379882812
+  },
+  {
+    "province_code": "30",
+    "province_name_th": "นครราชสีมา",
+    "population": 2298531.1041870117
+  },
+  {
+    "province_code": "31",
+    "province_name_th": "บุรีรัมย์",
+    "population": 1009540.6478271484
+  },
+  {
+    "province_code": "32",
+    "province_name_th": "สุรินทร์",
+    "population": 879609.4510498047
+  },
+  {
+    "province_code": "33",
+    "province_name_th": "ศรีสะเกษ",
+    "population": 845746.015625
+  },
+  {
+    "province_code": "34",
+    "province_name_th": "อุบลราชธานี",
+    "population": 1676452.1550292969
+  },
+  {
+    "province_code": "35",
+    "province_name_th": "ยโสธร",
+    "population": 395964.4501953125
+  },
+  {
+    "province_code": "36",
+    "province_name_th": "ชัยภูมิ",
+    "population": 788125.9010620117
+  },
+  {
+    "province_code": "37",
+    "province_name_th": "อำนาจเจริญ",
+    "population": 209045.99438476562
+  },
+  {
+    "province_code": "38",
+    "province_name_th": "บึงกาฬ",
+    "population": 308906.72912597656
+  },
+  {
+    "province_code": "39",
+    "province_name_th": "หนองบัวลำภู",
+    "population": 453863.4514160156
+  },
+  {
+    "province_code": "40",
+    "province_name_th": "ขอนแก่น",
+    "population": 1625432.3122558594
+  },
+  {
+    "province_code": "41",
+    "province_name_th": "อุดรธานี",
+    "population": 1042267.4407348633
+  },
+  {
+    "province_code": "42",
+    "province_name_th": "เลย",
+    "population": 456214.5549926758
+  },
+  {
+    "province_code": "43",
+    "province_name_th": "หนองคาย",
+    "population": 399225.90966796875
+  },
+  {
+    "province_code": "44",
+    "province_name_th": "มหาสารคาม",
+    "population": 673150.7683105469
+  },
+  {
+    "province_code": "45",
+    "province_name_th": "ร้อยเอ็ด",
+    "population": 874428.1695556641
+  },
+  {
+    "province_code": "46",
+    "province_name_th": "กาฬสินธุ์",
+    "population": 684380.4989013672
+  },
+  {
+    "province_code": "47",
+    "province_name_th": "สกลนคร",
+    "population": 794442.8364257812
+  },
+  {
+    "province_code": "48",
+    "province_name_th": "นครพนม",
+    "population": 463561.62841796875
+  },
+  {
+    "province_code": "49",
+    "province_name_th": "มุกดาหาร",
+    "population": 381272.3214111328
+  },
+  {
+    "province_code": "50",
+    "province_name_th": "เชียงใหม่",
+    "population": 1860262.052886963
+  },
+  {
+    "province_code": "51",
+    "province_name_th": "ลำพูน",
+    "population": 410791.04443359375
+  },
+  {
+    "province_code": "52",
+    "province_name_th": "ลำปาง",
+    "population": 638568.8706054688
+  },
+  {
+    "province_code": "53",
+    "province_name_th": "อุตรดิตถ์",
+    "population": 384903.82623291016
+  },
+  {
+    "province_code": "54",
+    "province_name_th": "แพร่",
+    "population": 475031.60040283203
+  },
+  {
+    "province_code": "55",
+    "province_name_th": "น่าน",
+    "population": 441346.7458496094
+  },
+  {
+    "province_code": "56",
+    "province_name_th": "พะเยา",
+    "population": 323074.3143310547
+  },
+  {
+    "province_code": "57",
+    "province_name_th": "เชียงราย",
+    "population": 1133720.3625488281
+  },
+  {
+    "province_code": "58",
+    "province_name_th": "แม่ฮ่องสอน",
+    "population": 193218.15368652344
+  },
+  {
+    "province_code": "60",
+    "province_name_th": "นครสวรรค์",
+    "population": 841882.9300537109
+  },
+  {
+    "province_code": "61",
+    "province_name_th": "อุทัยธานี",
+    "population": 270694.20317077637
+  },
+  {
+    "province_code": "62",
+    "province_name_th": "กำแพงเพชร",
+    "population": 874132.5578613281
+  },
+  {
+    "province_code": "63",
+    "province_name_th": "ตาก",
+    "population": 528224.6625976562
+  },
+  {
+    "province_code": "64",
+    "province_name_th": "สุโขทัย",
+    "population": 621411.8726806641
+  },
+  {
+    "province_code": "65",
+    "province_name_th": "พิษณุโลก",
+    "population": 974406.9825439453
+  },
+  {
+    "province_code": "66",
+    "province_name_th": "พิจิตร",
+    "population": 489060.6081542969
+  },
+  {
+    "province_code": "67",
+    "province_name_th": "เพชรบูรณ์",
+    "population": 852182.2936401367
+  },
+  {
+    "province_code": "70",
+    "province_name_th": "ราชบุรี",
+    "population": 746712.6741943359
+  },
+  {
+    "province_code": "71",
+    "province_name_th": "กาญจนบุรี",
+    "population": 814779.4375
+  },
+  {
+    "province_code": "72",
+    "province_name_th": "สุพรรณบุรี",
+    "population": 773676.8649902344
+  },
+  {
+    "province_code": "73",
+    "province_name_th": "นครปฐม",
+    "population": 1026642.538269043
+  },
+  {
+    "province_code": "74",
+    "province_name_th": "สมุทรสาคร",
+    "population": 1562146.6235351562
+  },
+  {
+    "province_code": "75",
+    "province_name_th": "สมุทรสงคราม",
+    "population": 158094.97439575195
+  },
+  {
+    "province_code": "76",
+    "province_name_th": "เพชรบุรี",
+    "population": 473906.6298828125
+  },
+  {
+    "province_code": "77",
+    "province_name_th": "ประจวบคีรีขันธ์",
+    "population": 451583.1446838379
+  },
+  {
+    "province_code": "80",
+    "province_name_th": "นครศรีธรรมราช",
+    "population": 1336153.2262573242
+  },
+  {
+    "province_code": "81",
+    "province_name_th": "กระบี่",
+    "population": 364189.3078613281
+  },
+  {
+    "province_code": "82",
+    "province_name_th": "พังงา",
+    "population": 263296.15493774414
+  },
+  {
+    "province_code": "83",
+    "province_name_th": "ภูเก็ต",
+    "population": 1019199.09765625
+  },
+  {
+    "province_code": "84",
+    "province_name_th": "สุราษฎร์ธานี",
+    "population": 1082466.5879058838
+  },
+  {
+    "province_code": "85",
+    "province_name_th": "ระนอง",
+    "population": 356625.5891571045
+  },
+  {
+    "province_code": "86",
+    "province_name_th": "ชุมพร",
+    "population": 454755.50036621094
+  },
+  {
+    "province_code": "90",
+    "province_name_th": "สงขลา",
+    "population": 1617280.5135498047
+  },
+  {
+    "province_code": "91",
+    "province_name_th": "สตูล",
+    "population": 280513.048828125
+  },
+  {
+    "province_code": "92",
+    "province_name_th": "ตรัง",
+    "population": 557287.4038696289
+  },
+  {
+    "province_code": "93",
+    "province_name_th": "พัทลุง",
+    "population": 430888.0960083008
+  },
+  {
+    "province_code": "94",
+    "province_name_th": "ปัตตานี",
+    "population": 575161.277557373
+  },
+  {
+    "province_code": "95",
+    "province_name_th": "ยะลา",
+    "population": 419598.81591796875
+  },
+  {
+    "province_code": "96",
+    "province_name_th": "นราธิวาส",
+    "population": 629915.9982910156
+  }
+]

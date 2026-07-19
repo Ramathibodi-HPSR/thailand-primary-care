@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spatial Coverage — Thailand Primary Care</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="map">
+    <aside id="sidebar">
+      <div class="panel">
+        <div class="title-block">
+          <span class="eyebrow">Thailand · Primary Care System</span>
+          <h1>Spatial Coverage</h1>
+          <h2>Population living within reach of a primary care facility</h2>
+        </div>
+
+        <p class="description">
+          Estimated population living within <strong><span id="sidebar-radius">1.0</span> km</strong>
+          of a primary care facility, by facility type.
+        </p>
+
+        <div class="kpi-grid">
+          <div class="stat-tile hero">
+            <div class="stat-label"><span class="stat-dot total"></span>All facility types</div>
+            <div class="stat-value"><span id="coverage">—</span><span class="unit">people</span></div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-label"><span class="stat-dot public"></span>Public only</div>
+            <div class="stat-value"><span id="coverage-public">—</span></div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-label">Non-public gap</div>
+            <div class="stat-value"><span id="coverage-gap">—</span></div>
+          </div>
+        </div>
+
+        <div class="chart-wrap">
+          <div class="section-label">Population covered, by radius</div>
+          <canvas id="coverage-chart"></canvas>
+          <div class="chart-legend">
+            <span class="key"><span class="swatch" style="background:var(--series-total)"></span>All facility types</span>
+            <span class="key"><span class="swatch" style="background:var(--series-public)"></span>Public only</span>
+            <span class="key"><span class="swatch dashed"></span>Non-public gap</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div id="radius-control">
+      <div class="radius-readout">Radius: <strong><span id="radius-label">1.0</span> km</strong></div>
+      <input id="radius-slider" type="range" min="0" max="0" step="1" value="0" />
+    </div>
+
+    <div id="filters">
+      <div class="filters-panel">
+        <label><input type="checkbox" id="cb-public" class="fp-public" checked><span class="type-dot fp-public"></span>Public primary care facilities</label>
+        <label><input type="checkbox" id="cb-pharm" class="fp-pharm" checked><span class="type-dot fp-pharm"></span>Pharmacy</label>
+        <label><input type="checkbox" id="cb-nurse" class="fp-nurse" checked><span class="type-dot fp-nurse"></span>Nurse and Midwife clinic</label>
+        <label><input type="checkbox" id="cb-doctor" class="fp-doctor" checked><span class="type-dot fp-doctor"></span>Private medical clinic</label>
+        <label><input type="checkbox" id="cb-other" class="fp-other" checked><span class="type-dot fp-other"></span>Others</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- libs -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- app -->
+  <script src="script.js"></script>
+</body>
+</html>

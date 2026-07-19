@@ -1,2 +1,4 @@
-coverage.parquet
-to_json.py
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

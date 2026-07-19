@@ -43,7 +43,7 @@ jobs:
 
       - name: Verify data files are real (not LFS pointers)
         run: |
-          for f in hospitals_confirmed.csv coverage_lookup.json coverage_distance.json; do
+          for f in dashboard/data/hospitals_confirmed.csv dashboard/data/coverage_lookup.json dashboard/data/coverage_distance.json; do
             echo "Checking $f"
             head -n 2 "$f"
             if head -n 1 "$f" | grep -q "git-lfs.github.com/spec"; then
@@ -58,7 +58,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'dashboard'
 
       - name: Deploy to GitHub Pages
         id: deployment

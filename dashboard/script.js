@@ -318,8 +318,17 @@
     chartLabels = radii.map(kmKey);
     chartValuesAll = chartLabels.map((k) => Number(coverageDistance[k] ?? 0));
     const hasPublic = !!coverageDistancePublic;
-    chartValuesPublic = hasPublic ? chartLabels.map((k) => Number(coverageDistancePublic[k] ?? 0)) : [];
-    chartValuesGap = hasPublic ? chartValuesAll.map((v, i) => Math.max(v - chartValuesPublic[i], 0)) : [];
+    // The public-facility source data only extends to ~5km (see README) —
+    // beyond that, there's no public figure to compare against, so leave
+    // those points as `null` rather than treating "missing" as "zero".
+    // Chart.js breaks the line at a null point instead of drawing a
+    // fabricated drop/spike through it.
+    chartValuesPublic = hasPublic
+      ? chartLabels.map((k) => (k in coverageDistancePublic ? Number(coverageDistancePublic[k]) : null))
+      : [];
+    chartValuesGap = hasPublic
+      ? chartValuesAll.map((v, i) => (chartValuesPublic[i] === null ? null : Math.max(v - chartValuesPublic[i], 0)))
+      : [];
 
     const datasets = [
       {

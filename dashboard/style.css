@@ -207,6 +207,12 @@ body { font-family: var(--font); }
   accent-color: var(--accent);
 }
 
+#radius-control .radius-hint {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
 #filters { position: absolute; top: 108px; right: 16px; z-index: 1300; }
 
 .filters-panel {

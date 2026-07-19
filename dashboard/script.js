@@ -2,10 +2,23 @@
    script.js — PC_MAP dashboard
    Required files (in ./data/):
      - hospitals_confirmed.csv
-     - coverage_lookup.json          (JSONL: {pc_id, radius_km, pop})
+     - coverage_lookup.json          ({ radii: [...], facilities: { pc_id: [pop,...] } })
      - coverage_distance.json        ({ "0.1": people, ... })
      - coverage_distance_public.json ({ "0.1": people, ... })
    Required libs in index.html: leaflet, papaparse, chart.js
+
+   Performance notes: with ~24k facilities, drawing both a coverage-radius
+   circle AND a marker per facility puts ~48k vector layers on the map.
+   Two things keep that from being laggy:
+     - `preferCanvas: true` — Leaflet draws vector layers on one shared
+       <canvas> instead of one <svg><path> per shape (SVG DOM churn is the
+       actual bottleneck at this layer count, not the geometry math).
+     - Buffer circles are only attached to the map once zoomed in past
+       CIRCLE_MIN_ZOOM. At the national view they'd just overlap into a
+       solid, uninformative blob anyway (try it) — so gating them by zoom
+       is a readability win, not just a performance one. Facility dots
+       stay visible at every zoom level (cheap: fixed pixel radius, never
+       recomputed on radius change).
    ========================================================= */
 
 (() => {
@@ -13,11 +26,12 @@
   // CONFIG
   // -----------------------------
   const PATH_FACILITIES = "data/hospitals_confirmed.csv";
-  const PATH_COV_LOOKUP_JSONL = "data/coverage_lookup.json";
+  const PATH_COV_LOOKUP_JSON = "data/coverage_lookup.json";
   const PATH_COV_DISTANCE_JSON = "data/coverage_distance.json";
   const PATH_COV_DISTANCE_PUBLIC_JSON = "data/coverage_distance_public.json";
 
   const TH_BOUNDS = L.latLngBounds([5.6, 97.3], [20.6, 105.7]);
+  const CIRCLE_MIN_ZOOM = 8; // below this, buffer circles are hidden (dots stay visible)
 
   // Chart/UI colors — keep in sync with the CSS custom properties in style.css
   const COLOR = {
@@ -36,6 +50,7 @@
     doctor: { line: "#008300", fill: "rgba(0,131,0,0.20)" },
     other: { line: "#898781", fill: "rgba(137,135,129,0.14)" },
   };
+  const TYPE_KEYS = ["public", "pharm", "nurse", "doctor", "other"];
 
   // -----------------------------
   // DOM
@@ -48,11 +63,13 @@
   const kpiCoverageGap = document.getElementById("coverage-gap");
   const chartCanvas = document.getElementById("coverage-chart");
 
-  const cbPublic = document.getElementById("cb-public");
-  const cbPharm = document.getElementById("cb-pharm");
-  const cbNurse = document.getElementById("cb-nurse");
-  const cbDoctor = document.getElementById("cb-doctor");
-  const cbOther = document.getElementById("cb-other");
+  const checkboxes = {
+    public: document.getElementById("cb-public"),
+    pharm: document.getElementById("cb-pharm"),
+    nurse: document.getElementById("cb-nurse"),
+    doctor: document.getElementById("cb-doctor"),
+    other: document.getElementById("cb-other"),
+  };
 
   if (!slider || !labelTop || !labelSide || !kpiCoverage) {
     console.error("Missing required DOM elements (#radius-slider/#radius-label/#sidebar-radius/#coverage).");
@@ -65,19 +82,12 @@
   let radii = [];              // available radii (km), ascending — read from coverage_distance.json
   let currentRadiusKm = 1.0;
 
-  let coverageLookup = {};       // pc_id -> { "0.1": pop, ... }
+  let lookupRadiiNum = [];       // ascending radii (km) matching coverage_lookup.json's "radii"
+  let lookupFacilities = {};     // pc_id -> [pop, ...] aligned with lookupRadiiNum
   let coverageDistance = null;   // { "0.1": n, ... }
   let coverageDistancePublic = null;
 
-  const LAYERS = {
-    public: L.layerGroup(),
-    pharm: L.layerGroup(),
-    nurse: L.layerGroup(),
-    doctor: L.layerGroup(),
-    other: L.layerGroup(),
-  };
-
-  const facilityItems = []; // { circle, marker, pcId, name, ctype }
+  const facilityItems = []; // { circle, marker, pcId, name, ctype, typeKey }
 
   let chartCoverage = null;
   let chartLabels = [];
@@ -125,6 +135,7 @@
     maxBounds: TH_BOUNDS,
     maxBoundsViscosity: 1.0,
     zoomControl: false,
+    preferCanvas: true, // draw vector layers on <canvas>, not one <svg><path> per shape
   });
 
   map.fitBounds(TH_BOUNDS, { padding: [20, 20] });
@@ -135,57 +146,53 @@
     attribution: "&copy; OpenStreetMap &copy; CARTO",
   }).addTo(map);
 
-  Object.values(LAYERS).forEach((lg) => lg.addTo(map));
-
-  function setLayerVisible(key, visible) {
-    const lg = LAYERS[key];
-    if (!lg) return;
-    if (visible) map.addLayer(lg);
-    else map.removeLayer(lg);
+  // Two layer groups per facility type: dots (always eligible) and buffer
+  // circles (zoom-gated). Splitting them means toggling circles on/off
+  // by zoom never has to touch the always-visible dots.
+  const LAYERS = {};
+  for (const key of TYPE_KEYS) {
+    LAYERS[key] = { markers: L.layerGroup(), circles: L.layerGroup() };
+    LAYERS[key].markers.addTo(map);
   }
 
-  cbPublic?.addEventListener("change", () => setLayerVisible("public", cbPublic.checked));
-  cbPharm?.addEventListener("change", () => setLayerVisible("pharm", cbPharm.checked));
-  cbNurse?.addEventListener("change", () => setLayerVisible("nurse", cbNurse.checked));
-  cbDoctor?.addEventListener("change", () => setLayerVisible("doctor", cbDoctor.checked));
-  cbOther?.addEventListener("change", () => setLayerVisible("other", cbOther.checked));
+  function circlesShouldShow(key) {
+    const cb = checkboxes[key];
+    return (!cb || cb.checked) && map.getZoom() >= CIRCLE_MIN_ZOOM;
+  }
 
-  [
-    ["public", cbPublic],
-    ["pharm", cbPharm],
-    ["nurse", cbNurse],
-    ["doctor", cbDoctor],
-    ["other", cbOther],
-  ].forEach(([key, cb]) => cb && setLayerVisible(key, cb.checked));
+  function syncLayerVisibility(key) {
+    const cb = checkboxes[key];
+    const checked = !cb || cb.checked;
+    if (checked) map.addLayer(LAYERS[key].markers);
+    else map.removeLayer(LAYERS[key].markers);
+
+    if (circlesShouldShow(key)) map.addLayer(LAYERS[key].circles);
+    else map.removeLayer(LAYERS[key].circles);
+  }
+
+  function syncAllLayerVisibility() {
+    for (const key of TYPE_KEYS) syncLayerVisibility(key);
+  }
+
+  for (const key of TYPE_KEYS) {
+    checkboxes[key]?.addEventListener("change", () => syncLayerVisibility(key));
+  }
+  map.on("zoomend", syncAllLayerVisibility);
+  syncAllLayerVisibility();
 
   // -----------------------------
-  // COVERAGE LOOKUP (JSONL)
+  // COVERAGE LOOKUP
   // -----------------------------
-  function parseCoverageJsonl(text) {
-    const lookup = {};
-    const lines = text.split("\n");
-
-    for (const raw of lines) {
-      const line = raw.trim();
-      if (!line) continue;
-
-      let rec;
-      try { rec = JSON.parse(line); } catch { continue; }
-
-      const pc = normalizePcId(rec.pc_id ?? rec.hcode);
-      const r = rec.radius_km;
-      const pop = rec.pop;
-
-      if (!pc || r === null || r === undefined || pop === null || pop === undefined) continue;
-
-      const key = kmKey(r);
-      const val = Number(pop);
-      if (!Number.isFinite(val)) continue;
-
-      lookup[pc] ??= {};
-      lookup[pc][key] = val;
+  function getCoverageForPc(pcId, radiusKm) {
+    const arr = lookupFacilities[String(pcId)];
+    if (!arr) return null;
+    const want = Number(radiusKm);
+    let val = null;
+    for (let i = 0; i < lookupRadiiNum.length; i++) {
+      if (lookupRadiiNum[i] <= want) val = arr[i];
+      else break;
     }
-    return lookup;
+    return val;
   }
 
   function nearestAtOrBelow(dict, radiusKm) {
@@ -200,9 +207,6 @@
     return val;
   }
 
-  function getCoverageForPc(pcId, radiusKm) {
-    return nearestAtOrBelow(coverageLookup[String(pcId)], radiusKm);
-  }
   function getTotalCoverage(radiusKm) {
     const v = nearestAtOrBelow(coverageDistance, radiusKm);
     return v === null ? null : Number(v);
@@ -253,7 +257,7 @@
       const name = safeGet(row, ["pc_name", "name", "NAME"]) || "Facility";
       const ctype = safeGet(row, ["clinic_type", "type", "facility_type"]) || "";
 
-      const layerKey = layerKeyFromType(ctype);
+      const typeKey = layerKeyFromType(ctype);
       const colors = typeColor(ctype);
 
       const circle = L.circle([lat, lon], {
@@ -262,7 +266,7 @@
         fillColor: colors.fill,
         fillOpacity: 1,
         weight: 1.2,
-      }).addTo(LAYERS[layerKey]);
+      }).addTo(LAYERS[typeKey].circles);
 
       const marker = L.circleMarker([lat, lon], {
         radius: 3,
@@ -270,9 +274,9 @@
         weight: 1.2,
         fillColor: colors.line,
         fillOpacity: 1,
-      }).addTo(LAYERS[layerKey]);
+      }).addTo(LAYERS[typeKey].markers);
 
-      const item = { circle, marker, pcId, name, ctype };
+      const item = { circle, marker, pcId, name, ctype, typeKey };
 
       circle.bindPopup(() => renderPopup(item));
       marker.bindPopup(() => renderPopup(item));
@@ -411,7 +415,10 @@
 
   // -----------------------------
   // SLIDER (index-based over the published radius steps, so every
-  // position on the slider maps to a real, published data point)
+  // position on the slider maps to a real, published data point).
+  // Dragging fires many 'input' events per frame in some browsers; only
+  // the latest value per animation frame actually gets applied, so a
+  // fast drag never queues up more work than the screen can show.
   // -----------------------------
   function setupSlider() {
     slider.min = 0;
@@ -427,9 +434,16 @@
     applyRadius(radii[idx]);
   }
 
+  let pendingRadiusIdx = null;
+  let radiusRafScheduled = false;
   slider.addEventListener("input", (e) => {
-    const idx = Number(e.target.value);
-    applyRadius(radii[idx]);
+    pendingRadiusIdx = Number(e.target.value);
+    if (radiusRafScheduled) return;
+    radiusRafScheduled = true;
+    requestAnimationFrame(() => {
+      radiusRafScheduled = false;
+      applyRadius(radii[pendingRadiusIdx]);
+    });
   });
 
   // -----------------------------
@@ -455,6 +469,9 @@
       kpiCoverageGap.textContent = typeof gap === "number" ? fmtInt(gap) : "—";
     }
 
+    // Cheap even for ~24k items: setRadius() on a circle that isn't
+    // currently attached to the map just updates a number, it doesn't
+    // trigger a redraw (see CIRCLE_MIN_ZOOM gating above).
     const rM = kmToM(radiusKm);
     for (const it of facilityItems) {
       it.circle.setRadius(rM);
@@ -470,37 +487,39 @@
   // -----------------------------
   // MAIN
   // -----------------------------
-  async function main() {
-    const resAll = await fetch(PATH_COV_DISTANCE_JSON);
-    if (!resAll.ok) throw new Error(`Failed to load ${PATH_COV_DISTANCE_JSON} (${resAll.status})`);
-    coverageDistance = await resAll.json();
+  async function fetchJson(path, { required = true } = {}) {
+    const res = await fetch(path);
+    if (!res.ok) {
+      if (required) throw new Error(`Failed to load ${path} (${res.status})`);
+      console.warn(`Failed to load ${path} (${res.status})`);
+      return null;
+    }
+    return res.json();
+  }
 
+  async function main() {
+    // Independent downloads/parses run concurrently instead of one after
+    // another — this is network/parse-bound, not CPU-bound, so there's no
+    // reason to serialize it.
+    const [distance, distancePublic, lookup, facilityRows] = await Promise.all([
+      fetchJson(PATH_COV_DISTANCE_JSON),
+      fetchJson(PATH_COV_DISTANCE_PUBLIC_JSON, { required: false }),
+      fetchJson(PATH_COV_LOOKUP_JSON),
+      loadFacilitiesCsv(),
+    ]);
+
+    coverageDistance = distance;
+    coverageDistancePublic = distancePublic;
     radii = Object.keys(coverageDistance).map(Number).filter(Number.isFinite).sort((a, b) => a - b);
 
-    const resPublic = await fetch(PATH_COV_DISTANCE_PUBLIC_JSON);
-    if (!resPublic.ok) {
-      console.warn(`Failed to load ${PATH_COV_DISTANCE_PUBLIC_JSON} (${resPublic.status})`);
-      coverageDistancePublic = null;
-    } else {
-      coverageDistancePublic = await resPublic.json();
-    }
+    lookupRadiiNum = (lookup.radii || []).map(Number);
+    lookupFacilities = lookup.facilities || {};
 
     setupSlider();
     initChart();
 
-    {
-      const res = await fetch(PATH_COV_LOOKUP_JSONL);
-      if (!res.ok) throw new Error(`Failed to load ${PATH_COV_LOOKUP_JSONL}`);
-      coverageLookup = parseCoverageJsonl(await res.text());
-    }
-
-    {
-      const rows = await loadFacilitiesCsv();
-      applyRadius(radii[Number(slider.value)]); // set currentRadiusKm before plotting circles
-      plotFacilities(rows);
-    }
-
-    applyRadius(radii[Number(slider.value)]);
+    applyRadius(radii[Number(slider.value)]); // set currentRadiusKm before plotting circles
+    plotFacilities(facilityRows);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -511,7 +530,7 @@
         "Tip: run a local server, e.g. python -m http.server\n" +
         "Ensure these files exist under dashboard/data/:\n" +
         `- ${PATH_FACILITIES}\n` +
-        `- ${PATH_COV_LOOKUP_JSONL}\n` +
+        `- ${PATH_COV_LOOKUP_JSON}\n` +
         `- ${PATH_COV_DISTANCE_JSON}`
       );
     });

@@ -296,10 +296,8 @@
   const currentRadiusLinePlugin = {
     id: "currentRadiusLine",
     afterDraw(chart) {
-      const idx = chartLabels.indexOf(kmKey(currentRadiusKm));
-      if (idx === -1) return;
       const { ctx, chartArea, scales } = chart;
-      const x = scales.x.getPixelForValue(idx);
+      const x = scales.x.getPixelForValue(currentRadiusKm);
       ctx.save();
       ctx.strokeStyle = COLOR.marker;
       ctx.lineWidth = 1.5;
@@ -330,10 +328,17 @@
       ? chartValuesAll.map((v, i) => (chartValuesPublic[i] === null ? null : Math.max(v - chartValuesPublic[i], 0)))
       : [];
 
+    // {x, y} points on a real linear x-axis: the published radius steps are
+    // tiered (every 0.1km near 0, widening to every 1km past 5km), so a
+    // category axis — which spaces points evenly by index — would visually
+    // stretch the short-radius end out of proportion. A linear axis keeps
+    // x position honestly proportional to actual km distance.
+    const toPoints = (values) => radii.map((r, i) => ({ x: r, y: values[i] }));
+
     const datasets = [
       {
         label: "All facility types",
-        data: chartValuesAll,
+        data: toPoints(chartValuesAll),
         borderColor: COLOR.total,
         backgroundColor: COLOR.total,
         borderWidth: 2,
@@ -346,7 +351,7 @@
       datasets.push(
         {
           label: "Public only",
-          data: chartValuesPublic,
+          data: toPoints(chartValuesPublic),
           borderColor: COLOR.public,
           backgroundColor: COLOR.public,
           borderWidth: 2,
@@ -355,7 +360,7 @@
         },
         {
           label: "Non-public gap",
-          data: chartValuesGap,
+          data: toPoints(chartValuesGap),
           borderColor: COLOR.gap,
           backgroundColor: COLOR.gap,
           borderWidth: 1.5,
@@ -373,22 +378,20 @@
 
     chartCoverage = new Chart(ctx, {
       type: "line",
-      data: { labels: chartLabels, datasets },
+      data: { datasets },
       plugins: [currentRadiusLinePlugin],
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        interaction: { mode: "index", intersect: false },
+        interaction: { mode: "nearest", axis: "x", intersect: false },
         scales: {
           x: {
+            type: "linear",
+            min: 0,
+            max: radii[radii.length - 1],
             title: { display: true, text: "Radius (km)", color: COLOR.textSecondary },
             grid: { color: COLOR.gridline },
-            ticks: {
-              color: COLOR.textSecondary,
-              autoSkip: true,
-              maxTicksLimit: 8,
-              callback: (_, index) => chartLabels[index],
-            },
+            ticks: { color: COLOR.textSecondary, maxTicksLimit: 8 },
           },
           y: {
             title: { display: true, text: "Population", color: COLOR.textSecondary },
@@ -406,15 +409,15 @@
             bodyColor: "rgba(255,255,255,0.85)",
             padding: 10,
             callbacks: {
+              title: (items) => `${items[0].parsed.x.toFixed(1)} km`,
               label: (item) => `${item.dataset.label}: ${fmtInt(item.parsed.y)}`,
             },
           },
         },
         onClick(evt, _elements, chart) {
-          const pts = chart.getElementsAtEventForMode(evt, "nearest", { intersect: true }, true);
+          const pts = chart.getElementsAtEventForMode(evt, "nearest", { intersect: false, axis: "x" }, true);
           if (!pts.length) return;
-          const idx = pts[0].index;
-          const rKm = Number(chartLabels[idx]);
+          const rKm = chart.data.datasets[pts[0].datasetIndex].data[pts[0].index].x;
           if (!Number.isFinite(rKm)) return;
           setRadiusByValue(rKm);
         },

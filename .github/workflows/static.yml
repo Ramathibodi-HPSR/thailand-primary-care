@@ -29,26 +29,19 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # The dashboard bundle is plain git (about 4 MB); the LFS files under
+      # data/raw are pipeline inputs the site does not need, so skip them.
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          lfs: true
-          fetch-depth: 0
+          lfs: false
 
-      - name: Pull LFS files (force)
+      - name: Check the dashboard bundle is complete
         run: |
-          git lfs install
-          git lfs pull
-          git lfs ls-files
-
-      - name: Verify data files are real (not LFS pointers)
-        run: |
-          for f in dashboard/data/hospitals_confirmed.csv dashboard/data/coverage_lookup.json dashboard/data/coverage_distance.json; do
-            echo "Checking $f"
-            head -n 2 "$f"
+          for f in dashboard/index.html dashboard/app.js dashboard/style.css dashboard/data/facts.json dashboard/data/charts.json dashboard/data/hex6.json dashboard/data/units.csv dashboard/data/sites.csv dashboard/data/provinces.geojson; do
+            test -s "$f" || { echo "ERROR: $f is missing or empty"; exit 1; }
             if head -n 1 "$f" | grep -q "git-lfs.github.com/spec"; then
-              echo "ERROR: $f is still an LFS pointer (not downloaded)."
-              exit 1
+              echo "ERROR: $f is an LFS pointer"; exit 1
             fi
           done
 

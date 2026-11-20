@@ -1,0 +1,501 @@
+order,lat,lon,people_added,ADM3_EN,ADM2_EN,ADM1_EN,ADM3_TH,ADM2_TH,ADM1_TH
+1,13.08071,100.89588,40973,Thung Sukhla,Si Racha,Chon Buri,ทุ่งสุขลา,ศรีราชา,ชลบุรี
+2,12.68837,101.13434,39293,Maptaphut,Mueang Rayong,Rayong,มาบตาพุด,เมืองระยอง,ระยอง
+3,7.92975,98.38407,26598,Ratsada,Mueang Phuket,Phuket,รัษฎา,เมืองภูเก็ต,ภูเก็ต
+4,13.99446,100.71719,25802,Bueng Kham Phroi,Lam Luk Ka,Pathum Thani,บึงคำพร้อย,ลำลูกกา,ปทุมธานี
+5,13.54411,100.21425,25296,Tha Sai,Mueang Samut Sakhon,Samut Sakhon,ท่าทราย,เมืองสมุทรสาคร,สมุทรสาคร
+6,13.76978,100.76081,23778,Khlong Sam Prawet,Lat Krabang,Bangkok,คลองสามประเวศ,ลาดกระบัง,กรุงเทพมหานคร
+7,13.53415,100.16483,23498,Chai Mongkhon,Mueang Samut Sakhon,Samut Sakhon,ชัยมงคล,เมืองสมุทรสาคร,สมุทรสาคร
+8,12.66211,101.31408,23326,Choeng Noen,Mueang Rayong,Rayong,เชิงเนิน,เมืองระยอง,ระยอง
+9,13.61303,100.31372,22575,Bang Nam Chuet,Mueang Samut Sakhon,Samut Sakhon,บางน้ำจืด,เมืองสมุทรสาคร,สมุทรสาคร
+10,13.81159,100.81304,22524,Lam Phak Chi,Nong Chok,Bangkok,ลำผักชี,หนองจอก,กรุงเทพมหานคร
+11,13.78262,100.79143,20093,Lam Pla Thio,Lat Krabang,Bangkok,ลำปลาทิว,ลาดกระบัง,กรุงเทพมหานคร
+12,13.72383,100.8197,17609,Thap Yao,Lat Krabang,Bangkok,ทับยาว,ลาดกระบัง,กรุงเทพมหานคร
+13,17.90874,98.41115,17287,Omkoi,Omkoi,Chiang Mai,อมก๋อย,อมก๋อย,เชียงใหม่
+14,14.64049,101.11989,16936,Thap Kwang,Kaeng Khoi,Saraburi,ทับกวาง,แก่งคอย,สระบุรี
+15,13.56385,100.34594,16353,Khok Kham,Mueang Samut Sakhon,Samut Sakhon,โคกขาม,เมืองสมุทรสาคร,สมุทรสาคร
+16,13.64337,100.85785,16204,Bang Bo,Bang Bo,Samut Prakan,บางบ่อ,บางบ่อ,สมุทรปราการ
+17,12.66763,100.94155,15755,Phlu Ta Luang,Sattahip,Chon Buri,พลูตาหลวง,สัตหีบ,ชลบุรี
+18,13.71364,101.20697,15568,Bang Khla,Bang Khla,Chachoengsao,บางคล้า,บางคล้า,ฉะเชิงเทรา
+19,6.8838,100.92133,15342,Ko Saba,Thepha,Songkhla,เกาะสะบ้า,เทพา,สงขลา
+20,13.59734,100.14395,15115,Lak Sam,Ban Phaeo,Samut Sakhon,หลักสาม,บ้านแพ้ว,สมุทรสาคร
+21,14.00699,100.74733,14812,Bueng Kham Phroi,Lam Luk Ka,Pathum Thani,บึงคำพร้อย,ลำลูกกา,ปทุมธานี
+22,14.09205,100.91511,14808,Khlong Yai,Ongkharak,Nakhon Nayok,คลองใหญ่,องครักษ์,นครนายก
+23,7.84889,98.38068,14553,Wichit,Mueang Phuket,Phuket,วิชิต,เมืองภูเก็ต,ภูเก็ต
+24,12.7779,100.92494,14121,Na Chom Thian,Sattahip,Chon Buri,นาจอมเทียน,สัตหีบ,ชลบุรี
+25,13.52057,100.12707,13849,Yok Krabat,Ban Phaeo,Samut Sakhon,ยกกระบัตร,บ้านแพ้ว,สมุทรสาคร
+26,13.90159,100.69027,13838,Sam Wa Tawan Tok,Khlong Sam Wa,Bangkok,สามวาตะวันตก,คลองสามวา,กรุงเทพมหานคร
+27,12.63381,100.92929,13631,Sattahip,Sattahip,Chon Buri,สัตหีบ,สัตหีบ,ชลบุรี
+28,6.531,100.42141,13494,Samnak Kham,Sadao,Songkhla,สำนักขาม,สะเดา,สงขลา
+29,13.91801,100.79143,13174,Sam Wa Tawan Ok,Khlong Sam Wa,Bangkok,สามวาตะวันออก,คลองสามวา,กรุงเทพมหานคร
+30,13.98208,101.76703,13059,Mueang Kao,Kabin Buri,Prachin Buri,เมืองเก่า,กบินทร์บุรี,ปราจีนบุรี
+31,14.04174,100.45612,12894,Khu Bang Luang,Lat Lum Kaeo,Pathum Thani,คูบางหลวง,ลาดหลุมแก้ว,ปทุมธานี
+32,16.16708,99.72078,12800,Khlong Khlung,Khlong Khlung,Kamphaeng Phet,คลองขลุง,คลองขลุง,กำแพงเพชร
+33,12.98587,100.9851,12585,Nong Pla Lai,Bang Lamung,Chon Buri,หนองปลาไหล,บางละมุง,ชลบุรี
+34,14.39185,100.90925,12452,Khok Yae,Nong Khae,Saraburi,โคกแย้,หนองแค,สระบุรี
+35,8.18136,98.29905,12420,Mai Khao,Thalang,Phuket,ไม้ขาว,ถลาง,ภูเก็ต
+36,13.26935,100.97333,12417,Mueang,Mueang Chon Buri,Chon Buri,เหมือง,เมืองชลบุรี,ชลบุรี
+37,14.69691,100.84401,12291,Khao Wong,Phra Phutthabat,Saraburi,เขาวง,พระพุทธบาท,สระบุรี
+38,12.70579,101.11762,12236,Huai Pong,Mueang Rayong,Rayong,ห้วยโป่ง,เมืองระยอง,ระยอง
+39,13.12683,100.98829,12109,Nong Kham,Si Racha,Chon Buri,หนองขาม,ศรีราชา,ชลบุรี
+40,13.59923,101.34038,11927,Hua Samrong,Plaeng Yao,Chachoengsao,หัวสำโรง,แปลงยาว,ฉะเชิงเทรา
+41,13.81779,100.76458,11728,Saen Saep,Min Buri,Bangkok,แสนแสบ,มีนบุรี,กรุงเทพมหานคร
+42,13.00838,101.16868,11497,Pluak Daeng,Pluak Daeng,Rayong,ปลวกแดง,ปลวกแดง,ระยอง
+43,14.05743,100.79598,11479,Lam Phak Kut,Thanyaburi,Pathum Thani,ลำผักกูด,ธัญบุรี,ปทุมธานี
+44,14.03571,100.7003,11424,Khlong Ha,Khlong Luang,Pathum Thani,คลองห้า,คลองหลวง,ปทุมธานี
+45,13.8435,100.93367,11391,Sala Daeng,Bang Nam Priao,Chachoengsao,ศาลาแดง,บางน้ำเปรี้ยว,ฉะเชิงเทรา
+46,14.06054,100.75565,11228,Bueng Bon,Nong Suea,Pathum Thani,บึงบอน,หนองเสือ,ปทุมธานี
+47,13.09721,100.88854,11161,Thung Sukhla,Si Racha,Chon Buri,ทุ่งสุขลา,ศรีราชา,ชลบุรี
+48,9.10835,99.16271,11139,Nong Sai,Phunphin,Surat Thani,หนองไทร,พุนพิน,สุราษฎร์ธานี
+49,14.83435,99.76221,11114,Nong Makha Mong,Dan Chang,Suphan Buri,หนองมะค่าโมง,ด่านช้าง,สุพรรณบุรี
+50,12.75486,101.17251,10926,Maptaphut,Mueang Rayong,Rayong,มาบตาพุด,เมืองระยอง,ระยอง
+51,13.69304,100.27777,10851,Om Yai,Sam Phran,Nakhon Pathom,อ้อมใหญ่,สามพราน,นครปฐม
+52,15.16386,98.45395,10705,Nong Lu,Sangkhla Buri,Kanchanaburi,หนองลู,สังขละบุรี,กาญจนบุรี
+53,13.59095,101.93702,10665,Nong Wa,Khao Chakan,Sa Kaeo,หนองหว้า,เขาฉกรรจ์,สระแก้ว
+54,12.69006,102.45416,10651,Nong Bon,Bo Rai,Trat,หนองบอน,บ่อไร่,ตราด
+55,8.13894,99.83939,10562,Ron Phibun,Ron Phibun,Nakhon Si Thammarat,ร่อนพิบูลย์,ร่อนพิบูลย์,นครศรีธรรมราช
+56,13.6158,100.46006,10385,Tha Kham,Bang Khun Thian,Bangkok,ท่าข้าม,บางขุนเทียน,กรุงเทพมหานคร
+57,9.8806,98.62574,10362,Bang Rin,Mueang Ranong,Ranong,บางริ้น,เมืองระนอง,ระนอง
+58,12.7375,100.89583,10248,Bang Sare,Sattahip,Chon Buri,บางเสร่,สัตหีบ,ชลบุรี
+59,13.86046,100.75457,10220,Sai Kong Din,Khlong Sam Wa,Bangkok,ทรายกองดิน,คลองสามวา,กรุงเทพมหานคร
+60,14.24721,100.2682,10184,Thep Mongkhon,Bang Sai,Phra Nakhon Si Ayutthaya,เทพมงคล,บางซ้าย,พระนครศรีอยุธยา
+61,8.01824,98.2932,10164,Choeng Thale,Thalang,Phuket,เชิงทะเล,ถลาง,ภูเก็ต
+62,13.99266,100.47023,10045,Khlong Phra Udom,Lat Lum Kaeo,Pathum Thani,คลองพระอุดม,ลาดหลุมแก้ว,ปทุมธานี
+63,13.88152,100.82515,9967,Khu Fung Nuea,Nong Chok,Bangkok,คู้ฝั่งเหนือ,หนองจอก,กรุงเทพมหานคร
+64,13.03204,100.99808,9957,Takhian Tia,Bang Lamung,Chon Buri,ตะเคียนเตี้ย,บางละมุง,ชลบุรี
+65,9.53967,99.20358,9950,Wang,Tha Chana,Surat Thani,วัง,ท่าชนะ,สุราษฎร์ธานี
+66,13.29103,101.3369,9938,Bo Kwang Thong,Bo Thong,Chon Buri,บ่อกวางทอง,บ่อทอง,ชลบุรี
+67,6.96812,100.76823,9895,Taling Chan,Chana,Songkhla,ตลิ่งชัน,จะนะ,สงขลา
+68,18.48703,99.18244,9779,Tha Pla Duk,Mae Tha,Lamphun,ทาปลาดุก,แม่ทา,ลำพูน
+69,13.2844,101.17995,9775,Nong Chak,Ban Bueng,Chon Buri,หนองชาก,บ้านบึง,ชลบุรี
+70,9.17831,99.36681,9732,Bang Kung,Mueang Surat Thani,Surat Thani,บางกุ้ง,เมืองสุราษฎร์ธาน,สุราษฎร์ธานี
+71,8.00034,98.3945,9725,Pa Khlok,Thalang,Phuket,ป่าคลอก,ถลาง,ภูเก็ต
+72,13.65754,100.77994,9714,Bang Chalong,Bang Phli,Samut Prakan,บางโฉลง,บางพลี,สมุทรปราการ
+73,13.97054,100.79779,9685,Bueng Thong Lang,Lam Luk Ka,Pathum Thani,บึงทองหลาง,ลำลูกกา,ปทุมธานี
+74,8.92712,98.9637,9685,Ban Thamniap,Khiri Rat Nikhom,Surat Thani,บ้านทำเนียบ,คีรีรัฐนิคม,สุราษฎร์ธานี
+75,13.77184,100.84202,9682,Lam Toiting,Nong Chok,Bangkok,ลำต้อยติ่ง,หนองจอก,กรุงเทพมหานคร
+76,13.81042,101.5275,9675,Hua Wa,Si Maha Phot,Prachin Buri,หัวหว้า,ศรีมหาโพธิ,ปราจีนบุรี
+77,13.92842,101.58959,9559,Tha Tum,Si Maha Phot,Prachin Buri,ท่าตูม,ศรีมหาโพธิ,ปราจีนบุรี
+78,14.45916,100.08618,9554,Don Kamyan,Mueang Suphan Buri,Suphan Buri,ดอนกำยาน,เมืองสุพรรณบุรี,สุพรรณบุรี
+79,14.64768,101.03609,9532,Ban Pa,Kaeng Khoi,Saraburi,บ้านป่า,แก่งคอย,สระบุรี
+80,12.66157,100.86749,9424,Sattahip,Sattahip,Chon Buri,สัตหีบ,สัตหีบ,ชลบุรี
+81,12.68209,101.62583,9385,Kram,Klaeng,Rayong,กร่ำ,แกลง,ระยอง
+82,12.63364,101.53986,9383,Chak Phong,Klaeng,Rayong,ชากพง,แกลง,ระยอง
+83,14.01891,100.36018,9351,Na Mai,Lat Lum Kaeo,Pathum Thani,หน้าไม้,ลาดหลุมแก้ว,ปทุมธานี
+84,15.6104,102.40157,9292,Dan Chang,Bua Yai,Nakhon Ratchasima,ด่านช้าง,บัวใหญ่,นครราชสีมา
+85,13.058,100.88969,9247,Thung Sukhla,Si Racha,Chon Buri,ทุ่งสุขลา,ศรีราชา,ชลบุรี
+86,16.35016,104.52667,9150,Nikhom Kham Soi,Nikhom Kham Soi,Mukdahan,นิคมคำสร้อย,นิคมคำสร้อย,มุกดาหาร
+87,13.37301,101.04948,9121,Samnak Bok,Mueang Chon Buri,Chon Buri,สำนักบก,เมืองชลบุรี,ชลบุรี
+88,15.85394,102.6152,9107,Kao Ngio,Phon,Khon Kaen,เก่างิ้ว,พล,ขอนแก่น
+89,17.88346,102.58543,9021,Kong Nang,Tha Bo,Nong Khai,กองนาง,ท่าบ่อ,หนองคาย
+90,12.67016,101.00084,9015,Phla,Ban Chang,Rayong,พลา,บ้านฉาง,ระยอง
+91,12.82241,101.23887,8984,Nong Lalok,Ban Khai,Rayong,หนองละลอก,บ้านค่าย,ระยอง
+92,14.37684,100.83094,8920,Nong Pling,Nong Khae,Saraburi,หนองปลิง,หนองแค,สระบุรี
+93,9.36333,99.22704,8918,Lamet,Chaiya,Surat Thani,เลม็ด,ไชยา,สุราษฎร์ธานี
+94,13.41584,101.20598,8887,Mon Nang,Phanat Nikhom,Chon Buri,หมอนนาง,พนัสนิคม,ชลบุรี
+95,13.90563,101.6511,8841,Lat Takhian,Kabin Buri,Prachin Buri,ลาดตะเคียน,กบินทร์บุรี,ปราจีนบุรี
+96,14.06659,100.86009,8838,Bueng Nam Rak,Thanyaburi,Pathum Thani,บึงน้ำรักษ์,ธัญบุรี,ปทุมธานี
+97,14.18991,100.64232,8786,Lam Sai,Wang Noi,Phra Nakhon Si Ayutthaya,ลำไทร,วังน้อย,พระนครศรีอยุธยา
+98,14.05554,101.61026,8751,Dong Bang,Prachantakham,Prachin Buri,ดงบัง,ประจันตคาม,ปราจีนบุรี
+99,14.01898,101.70416,8745,Nonsi,Kabin Buri,Prachin Buri,นนทรี,กบินทร์บุรี,ปราจีนบุรี
+100,16.73398,102.84726,8738,Wang Chai,Nam Phong,Khon Kaen,วังชัย,น้ำพอง,ขอนแก่น
+101,13.24681,101.15332,8717,Khlong Kio,Ban Bueng,Chon Buri,คลองกิ่ว,บ้านบึง,ชลบุรี
+102,13.71993,100.27108,8647,Rai Khing,Sam Phran,Nakhon Pathom,ไร่ขิง,สามพราน,นครปฐม
+103,13.75286,100.76669,8642,Khlong Sam Prawet,Lat Krabang,Bangkok,คลองสามประเวศ,ลาดกระบัง,กรุงเทพมหานคร
+104,9.26385,99.57273,8574,Tha Thong,Kanchanadit,Surat Thani,ท่าทอง,กาญจนดิษฐ์,สุราษฎร์ธานี
+105,13.37831,101.33728,8519,Tha Bunmi,Ko Chan,Chon Buri,ท่าบุญมี,เกาะจันทร์,ชลบุรี
+106,13.89374,100.86409,8512,Khlong Sip Song,Nong Chok,Bangkok,คลองสิบสอง,หนองจอก,กรุงเทพมหานคร
+107,13.30091,100.99521,8512,Nong Khang Khok,Mueang Chon Buri,Chon Buri,หนองข้างคอก,เมืองชลบุรี,ชลบุรี
+108,12.91795,101.02352,8490,Pong,Bang Lamung,Chon Buri,โป่ง,บางละมุง,ชลบุรี
+109,13.75317,100.18769,8484,Tha Tamnak,Nakhon Chai Si,Nakhon Pathom,ท่าตำหนัก,นครชัยศรี,นครปฐม
+110,14.1386,101.36016,8478,Mai Khet,Mueang Prachin Buri,Prachin Buri,ไม้เค็ด,เมืองปราจีนบุรี,ปราจีนบุรี
+111,14.67907,100.79107,8449,Phu Krang,Phra Phutthabat,Saraburi,พุกร่าง,พระพุทธบาท,สระบุรี
+112,16.38952,102.81027,8436,Mueang Kao,Mueang Khon Kaen,Khon Kaen,เมืองเก่า,เมืองขอนแก่น,ขอนแก่น
+113,14.49373,102.16315,8395,Chorakhe Hin,Khon Buri,Nakhon Ratchasima,จระเข้หิน,ครบุรี,นครราชสีมา
+114,12.6621,99.94422,8390,Cha-Am,Cha-Am,Phetchaburi,ชะอำ,ชะอำ,เพชรบุรี
+115,14.9846,100.01095,8386,Hankha,Hankha,Chai Nat,หันคา,หันคา,ชัยนาท
+116,6.94238,100.38746,8252,Thung Tam Sao,Hat Yai,Songkhla,ทุ่งตำเสา,หาดใหญ่,สงขลา
+117,14.13226,100.81128,8198,Bueng Ba,Nong Suea,Pathum Thani,บึงบา,หนองเสือ,ปทุมธานี
+118,12.18354,99.98347,8109,Sam Roi Yot,Sam Roi Yot,Prachuap Khiri Khan,สามร้อยยอด,สามร้อยยอด,ประจวบคีรีขันธ์
+119,18.29831,99.74456,8090,Mae Mo,Mae Mo,Lampang,แม่เมาะ,แม่เมาะ,ลำปาง
+120,16.63028,99.85944,8072,Lan Krabue,Lan Krabue,Kamphaeng Phet,ลานกระบือ,ลานกระบือ,กำแพงเพชร
+121,12.75492,101.00493,8068,Phlu Ta Luang,Sattahip,Chon Buri,พลูตาหลวง,สัตหีบ,ชลบุรี
+122,14.15067,100.63369,8034,Phayom,Wang Noi,Phra Nakhon Si Ayutthaya,พยอม,วังน้อย,พระนครศรีอยุธยา
+123,13.55458,100.86717,8027,Bang Bo,Bang Bo,Samut Prakan,บางบ่อ,บางบ่อ,สมุทรปราการ
+124,10.17439,99.09599,8011,Na Sak,Sawi,Chumphon,นาสัก,สวี,ชุมพร
+125,7.59034,100.31367,7976,Krasae Sin,Krasae Sin,Songkhla,กระแสสินธุ์,กระแสสินธุ์,สงขลา
+126,13.84615,101.06292,7899,Phrong Akat,Bang Nam Priao,Chachoengsao,โพรงอากาศ,บางน้ำเปรี้ยว,ฉะเชิงเทรา
+127,10.39056,99.23689,7868,Pak Nam,Mueang Chumphon,Chumphon,ปากน้ำ,เมืองชุมพร,ชุมพร
+128,6.28061,101.29244,7849,Taling Chan,Bannang Sata,Yala,ตลิ่งชัน,บันนังสตา,ยะลา
+129,8.09186,98.33646,7830,Thep Krasattri,Thalang,Phuket,เทพกระษัตรี,ถลาง,ภูเก็ต
+130,12.65503,101.60168,7799,Chak Phong,Klaeng,Rayong,ชากพง,แกลง,ระยอง
+131,13.55368,100.72281,7799,Bang Pla,Bang Phli,Samut Prakan,บางปลา,บางพลี,สมุทรปราการ
+132,13.51198,100.7548,7796,Bang Pu,Mueang Samut Prakan,Samut Prakan,บางปู,เมืองสมุทรปราการ,สมุทรปราการ
+133,16.81726,100.33717,7786,Samo Khae,Mueang Phitsanulok,Phitsanulok,สมอแข,เมืองพิษณุโลก,พิษณุโลก
+134,15.14148,105.05296,7772,Rai Tai,Phibun Mangsahan,Ubon Ratchathani,ไร่ใต้,พิบูลมังสาหาร,อุบลราชธานี
+135,14.65533,101.39326,7696,Nong Nam Daeng,Pak Chong,Nakhon Ratchasima,หนองน้ำแดง,ปากช่อง,นครราชสีมา
+136,8.6697,99.37007,7690,Ban Song,Wiang Sa,Surat Thani,บ้านส้อง,เวียงสระ,สุราษฎร์ธานี
+137,14.43694,99.52419,7685,Lum Rang,Bo Phloi,Kanchanaburi,หลุมรัง,บ่อพลอย,กาญจนบุรี
+138,16.94108,100.82793,7681,Huai Hia,Nakhon Thai,Phitsanulok,ห้วยเฮี้ย,นครไทย,พิษณุโลก
+139,13.67223,100.84993,7661,Bang Sao Thong,Bang Sao Thong,Samut Prakan,บางเสาธง,บางเสาธง,สมุทรปราการ
+140,13.4992,100.84502,7646,Khlong Dan,Bang Bo,Samut Prakan,คลองด่าน,บางบ่อ,สมุทรปราการ
+141,13.90863,100.71506,7635,Sam Wa Tawan Tok,Khlong Sam Wa,Bangkok,สามวาตะวันตก,คลองสามวา,กรุงเทพมหานคร
+142,7.90017,98.33341,7615,Kathu,Kathu,Phuket,กะทู้,กะทู้,ภูเก็ต
+143,13.37214,101.14563,7596,Nong Bon Daeng,Ban Bueng,Chon Buri,หนองบอนแดง,บ้านบึง,ชลบุรี
+144,14.07388,101.51639,7570,Pho Ngam,Prachantakham,Prachin Buri,โพธิ์งาม,ประจันตคาม,ปราจีนบุรี
+145,12.79068,101.23576,7553,Nong Lalok,Ban Khai,Rayong,หนองละลอก,บ้านค่าย,ระยอง
+146,14.0102,100.44504,7548,Khlong Phra Udom,Lat Lum Kaeo,Pathum Thani,คลองพระอุดม,ลาดหลุมแก้ว,ปทุมธานี
+147,12.79424,101.19362,7522,Map Kha,Nikhom Phatthana,Rayong,มาบข่า,นิคมพัฒนา,ระยอง
+148,14.29799,101.17653,7492,Phrommani,Mueang Nakhon Nayok,Nakhon Nayok,พรหมณี,เมืองนครนายก,นครนายก
+149,16.01256,105.23134,7485,Khemarat,Khemarat,Ubon Ratchathani,เขมราฐ,เขมราฐ,อุบลราชธานี
+150,18.15132,98.36161,7481,Bo Luang,Hot,Chiang Mai,บ่อหลวง,ฮอด,เชียงใหม่
+151,16.41516,102.77929,7479,Ban Pet,Mueang Khon Kaen,Khon Kaen,บ้านเป็ด,เมืองขอนแก่น,ขอนแก่น
+152,13.85203,100.96832,7428,Don Chimphli,Bang Nam Priao,Chachoengsao,ดอนฉิมพลี,บางน้ำเปรี้ยว,ฉะเชิงเทรา
+153,17.37354,103.81931,7420,Chang Ming,Phanna Nikhom,Sakon Nakhon,ช้างมิ่ง,พรรณานิคม,สกลนคร
+154,12.9369,99.85808,7406,Tha Khoi,Tha Yang,Phetchaburi,ท่าคอย,ท่ายาง,เพชรบุรี
+155,13.41028,100.99559,7365,Nong Mai Daeng,Mueang Chon Buri,Chon Buri,หนองไม้แดง,เมืองชลบุรี,ชลบุรี
+156,14.10449,99.65994,7354,Nong Rong,Phanom Thuan,Kanchanaburi,หนองโรง,พนมทวน,กาญจนบุรี
+157,15.7425,102.46099,7322,Khok Sa-Nga,Phon,Khon Kaen,โคกสง่า,พล,ขอนแก่น
+158,13.29133,101.26407,7309,Nong I Run,Ban Bueng,Chon Buri,หนองอิรุณ,บ้านบึง,ชลบุรี
+159,13.81361,100.8661,7267,Lam Phak Chi,Nong Chok,Bangkok,ลำผักชี,หนองจอก,กรุงเทพมหานคร
+160,12.84279,100.91804,7263,Na Chom Thian,Sattahip,Chon Buri,นาจอมเทียน,สัตหีบ,ชลบุรี
+161,15.21166,101.12038,7243,Chai Narai,Chai Badan,Lop Buri,ชัยนารายณ์,ชัยบาดาล,ลพบุรี
+162,17.23769,102.39609,7213,Nong Phai Sun,Mueang Nong Bua Lam Phu,Nong Bua Lam Phu,หนองภัยศูนย์,เมืองหนองบัวลำภู,หนองบัวลำภู
+163,17.65125,102.19125,7193,Dong Mafai,Suwannakhuha,Nong Bua Lam Phu,ดงมะไฟ,สุวรรณคูหา,หนองบัวลำภู
+164,14.95407,103.08867,7169,Samet,Mueang Buri Ram,Buri Ram,เสม็ด,เมืองบุรีรัมย์,บุรีรัมย์
+165,8.21175,99.86664,7128,Ron Phibun,Ron Phibun,Nakhon Si Thammarat,ร่อนพิบูลย์,ร่อนพิบูลย์,นครศรีธรรมราช
+166,15.76703,100.11469,7128,Bang Muang,Mueang Nakhon Sawan,Nakhon Sawan,บางม่วง,เมืองนครสวรรค์,นครสวรรค์
+167,13.69181,101.41201,7110,Ko Khanun,Phanom Sarakham,Chachoengsao,เกาะขนุน,พนมสารคาม,ฉะเชิงเทรา
+168,16.6101,104.6855,7108,Bang Sai Yai,Mueang Mukdahan,Mukdahan,บางทรายใหญ่,เมืองมุกดาหาร,มุกดาหาร
+169,13.54777,100.64818,7074,Bang Pu Mai,Mueang Samut Prakan,Samut Prakan,บางปูใหม่,เมืองสมุทรปราการ,สมุทรปราการ
+170,10.16326,98.7096,7048,Sai Daeng,Mueang Ranong,Ranong,ทรายแดง,เมืองระนอง,ระนอง
+171,12.80739,101.30767,7037,Bang But,Ban Khai,Rayong,บางบุตร,บ้านค่าย,ระยอง
+172,12.64256,100.95475,7031,Phlu Ta Luang,Sattahip,Chon Buri,พลูตาหลวง,สัตหีบ,ชลบุรี
+173,13.51962,100.30448,7004,Khok Kham,Mueang Samut Sakhon,Samut Sakhon,โคกขาม,เมืองสมุทรสาคร,สมุทรสาคร
+174,9.11522,99.26495,6996,Tha Kham,Phunphin,Surat Thani,ท่าข้าม,พุนพิน,สุราษฎร์ธานี
+175,17.29208,102.26166,6994,Na Kham Hai,Mueang Nong Bua Lam Phu,Nong Bua Lam Phu,นาคำไฮ,เมืองหนองบัวลำภู,หนองบัวลำภู
+176,14.63643,101.08624,6950,Thap Kwang,Kaeng Khoi,Saraburi,ทับกวาง,แก่งคอย,สระบุรี
+177,13.87667,100.78364,6940,Sai Kong Din Tai,Khlong Sam Wa,Bangkok,ทรายกองดินใต้,คลองสามวา,กรุงเทพมหานคร
+178,14.08248,100.51296,6923,Khlong Khwai,Sam Khok,Pathum Thani,คลองควาย,สามโคก,ปทุมธานี
+179,9.03795,99.17129,6922,Tha Rong Chang,Phunphin,Surat Thani,ท่าโรงช้าง,พุนพิน,สุราษฎร์ธานี
+180,17.37945,102.75342,6907,Na Di,Mueang Udon Thani,Udon Thani,นาดี,เมืองอุดรธานี,อุดรธานี
+181,16.78055,100.17312,6883,Tha Pho,Mueang Phitsanulok,Phitsanulok,ท่าโพธิ์,เมืองพิษณุโลก,พิษณุโลก
+182,7.4922,99.62368,6858,Khuan Pring,Mueang Trang,Trang,ควนปริง,เมืองตรัง,ตรัง
+183,17.55187,99.86038,6843,Dong Khu,Si Satchanalai,Sukhothai,ดงคู่,ศรีสัชนาลัย,สุโขทัย
+184,12.95276,100.99947,6840,Pong,Bang Lamung,Chon Buri,โป่ง,บางละมุง,ชลบุรี
+185,14.00342,101.24541,6766,Ban Sang,Ban Sang,Prachin Buri,บ้านสร้าง,บ้านสร้าง,ปราจีนบุรี
+186,14.1936,99.99125,6761,Thung Khok,Song Phi Nong,Suphan Buri,ทุ่งคอก,สองพี่น้อง,สุพรรณบุรี
+187,10.39194,99.19467,6759,Tha Yang,Mueang Chumphon,Chumphon,ท่ายาง,เมืองชุมพร,ชุมพร
+188,13.46717,101.04673,6758,Bang Nang,Phan Thong,Chon Buri,บางนาง,พานทอง,ชลบุรี
+189,7.11598,100.54373,6699,Nam Noi,Hat Yai,Songkhla,น้ำน้อย,หาดใหญ่,สงขลา
+190,17.02848,99.98436,6689,Krai Nai,Kong Krailat,Sukhothai,ไกรใน,กงไกรลาศ,สุโขทัย
+191,13.52667,102.0525,6669,Thung Mahacharoen,Wang Nam Yen,Sa Kaeo,ทุ่งมหาเจริญ,วังน้ำเย็น,สระแก้ว
+192,13.35234,101.28009,6652,Tha Bunmi,Ko Chan,Chon Buri,ท่าบุญมี,เกาะจันทร์,ชลบุรี
+193,17.12994,100.92052,6632,Noen Phoem,Nakhon Thai,Phitsanulok,เนินเพิ่ม,นครไทย,พิษณุโลก
+194,16.69523,103.08065,6610,Nong Ko,Kranuan,Khon Kaen,หนองโก,กระนวน,ขอนแก่น
+195,19.58528,99.74946,6609,Santi Suk,Phan,Chiang Rai,สันติสุข,พาน,เชียงราย
+196,13.91032,100.26008,6556,Nara Phirom,Bang Len,Nakhon Pathom,นราภิรมย์,บางเลน,นครปฐม
+197,8.56664,99.33166,6494,Thung Luang,Wiang Sa,Surat Thani,ทุ่งหลวง,เวียงสระ,สุราษฎร์ธานี
+198,13.70333,101.05836,6482,Wang Takhian,Mueang Chachoengsao,Chachoengsao,วังตะเคียน,เมืองฉะเชิงเทรา,ฉะเชิงเทรา
+199,12.96666,101.67292,6476,Huai Thap Mon,Khao Chamao,Rayong,ห้วยทับมอญ,เขาชะเมา,ระยอง
+200,8.06245,98.42939,6415,Pa Khlok,Thalang,Phuket,ป่าคลอก,ถลาง,ภูเก็ต
+201,13.8535,99.99471,6391,Nong Pak Long,Mueang Nakhon Pathom,Nakhon Pathom,หนองปากโลง,เมืองนครปฐม,นครปฐม
+202,6.90941,100.89891,6389,Ko Saba,Thepha,Songkhla,เกาะสะบ้า,เทพา,สงขลา
+203,14.77349,100.09211,6387,Sam Chuk,Sam Chuk,Suphan Buri,สามชุก,สามชุก,สุพรรณบุรี
+204,13.18392,101.24507,6374,Nong Phai Kaeo,Ban Bueng,Chon Buri,หนองไผ่แก้ว,บ้านบึง,ชลบุรี
+205,14.06529,100.57158,6372,Chiang Rak Yai,Sam Khok,Pathum Thani,เชียงรากใหญ่,สามโคก,ปทุมธานี
+206,14.0016,99.76339,6357,Takhram En,Tha Maka,Kanchanaburi,ตะคร้ำเอน,ท่ามะกา,กาญจนบุรี
+207,14.77259,100.90865,6354,Chong Sarika,Phatthana Nikhom,Lop Buri,ช่องสาริกา,พัฒนานิคม,ลพบุรี
+208,12.66583,101.15083,6349,Maptaphut,Mueang Rayong,Rayong,มาบตาพุด,เมืองระยอง,ระยอง
+209,14.42855,102.49865,6346,Kut Bot,Soeng Sang,Nakhon Ratchasima,กุดโบสถ์,เสิงสาง,นครราชสีมา
+210,13.54134,101.2596,6342,Sa Si Liam,Phanat Nikhom,Chon Buri,สระสี่เหลี่ยม,พนัสนิคม,ชลบุรี
+211,14.12374,101.84231,6338,Na Di,Na Di,Prachin Buri,นาดี,นาดี,ปราจีนบุรี
+212,15.96246,99.83916,6335,Bang Kaeo,Banphot Phisai,Nakhon Sawan,บางแก้ว,บรรพตพิสัย,นครสวรรค์
+213,14.84855,101.64774,6332,Lat Bua Khao,Sikhio,Nakhon Ratchasima,ลาดบัวขาว,สีคิ้ว,นครราชสีมา
+214,13.09102,101.12935,6332,Khao Khan Song,Si Racha,Chon Buri,เขาคันทรง,ศรีราชา,ชลบุรี
+215,6.88426,99.81223,6326,La-Ngu,La-Ngu,Satun,ละงู,ละงู,สตูล
+216,15.18683,102.50362,6315,Nai Mueang,Phimai,Nakhon Ratchasima,ในเมือง,พิมาย,นครราชสีมา
+217,15.64902,101.04399,6291,Sa Pradu,Wichian Buri,Phetchabun,สระประดู่,วิเชียรบุรี,เพชรบูรณ์
+218,17.33105,101.76498,6286,Pak Puan,Wang Saphung,Loei,ปากปวน,วังสะพุง,เลย
+219,7.28448,100.15469,6269,Nong Thong,Pa Bon,Phatthalung,หนองธง,ป่าบอน,พัทลุง
+220,13.98122,100.16447,6262,Bang Pla,Bang Len,Nakhon Pathom,บางปลา,บางเลน,นครปฐม
+221,12.72909,101.21251,6235,Thap Ma,Mueang Rayong,Rayong,ทับมา,เมืองระยอง,ระยอง
+222,14.605,100.13886,6227,Ban Krang,Si Prachan,Suphan Buri,บ้านกร่าง,ศรีประจันต์,สุพรรณบุรี
+223,14.08417,100.82917,6200,Bueng Ba,Nong Suea,Pathum Thani,บึงบา,หนองเสือ,ปทุมธานี
+224,16.3775,99.98083,6188,Nong Mae Taeng,Sai Ngam,Kamphaeng Phet,หนองแม่แตง,ไทรงาม,กำแพงเพชร
+225,14.095,100.675,6177,Khlong Sam,Khlong Luang,Pathum Thani,คลองสาม,คลองหลวง,ปทุมธานี
+226,13.8448,101.53167,6141,Hua Wa,Si Maha Phot,Prachin Buri,หัวหว้า,ศรีมหาโพธิ,ปราจีนบุรี
+227,13.70767,101.46677,6138,Khao Hin Son,Phanom Sarakham,Chachoengsao,เขาหินซ้อน,พนมสารคาม,ฉะเชิงเทรา
+228,16.75702,100.31079,6108,Wang Phikun,Wang Thong,Phitsanulok,วังพิกุล,วังทอง,พิษณุโลก
+229,14.7578,102.31014,6105,Nong Hua Raet,Nong Bun Mak,Nakhon Ratchasima,หนองหัวแรต,หนองบุญมาก,นครราชสีมา
+230,12.78655,101.77167,6088,Kong Din,Klaeng,Rayong,กองดิน,แกลง,ระยอง
+231,17.62077,100.12972,6083,Khung Taphao,Mueang Uttaradit,Uttaradit,คุ้งตะเภา,เมืองอุตรดิตถ์,อุตรดิตถ์
+232,17.02593,100.17354,6071,Phrom Phiram,Phrom Phiram,Phitsanulok,พรหมพิราม,พรหมพิราม,พิษณุโลก
+233,19.02084,98.93495,6067,Khi Lek,Mae Rim,Chiang Mai,ขี้เหล็ก,แม่ริม,เชียงใหม่
+234,13.49399,101.02576,6017,Tha Kham,Bang Pakong,Chachoengsao,ท่าข้าม,บางปะกง,ฉะเชิงเทรา
+235,8.85011,99.19575,6009,Khian Sa,Khian Sa,Surat Thani,เคียนซา,เคียนซา,สุราษฎร์ธานี
+236,6.02333,101.92669,6000,Su-Ngai Kolok,Su-Ngai Kolok,Narathiwat,สุไหงโก-ลก,สุไหงโก-ลก,นราธิวาส
+237,17.38412,103.73069,5993,Phang Khon,Phang Khon,Sakon Nakhon,พังโคน,พังโคน,สกลนคร
+238,7.65331,100.02524,5992,Phraek Ha,Khuan Khanun,Phatthalung,แพรกหา,ควนขนุน,พัทลุง
+239,14.0298,99.71386,5983,Takhram En,Tha Maka,Kanchanaburi,ตะคร้ำเอน,ท่ามะกา,กาญจนบุรี
+240,18.39129,98.96375,5981,Tha Khum Ngoen,Mae Tha,Lamphun,ทาขุมเงิน,แม่ทา,ลำพูน
+241,6.96685,100.50673,5978,Na Mom,Na Mom,Songkhla,นาหม่อม,นาหม่อม,สงขลา
+242,8.73224,98.24777,5977,Khuek Khak,Takua Pa,Phangnga,คึกคัก,ตะกั่วป่า,พังงา
+243,13.72708,102.51244,5956,Ban Mai Nong Sai,Aranyaprathet,Sa Kaeo,บ้านใหม่หนองไทร,อรัญประเทศ,สระแก้ว
+244,7.82421,100.35158,5946,Tha Bon,Ranot,Songkhla,ท่าบอน,ระโนด,สงขลา
+245,19.10917,98.79333,5946,Sop Poeng,Mae Taeng,Chiang Mai,สบเปิง,แม่แตง,เชียงใหม่
+246,12.79453,101.6329,5927,Thang Kwian,Klaeng,Rayong,ทางเกวียน,แกลง,ระยอง
+247,12.8461,101.30637,5921,Nong Bua,Ban Khai,Rayong,หนองบัว,บ้านค่าย,ระยอง
+248,16.70623,100.1689,5917,Bang Rakam,Bang Rakam,Phitsanulok,บางระกำ,บางระกำ,พิษณุโลก
+249,13.01272,101.45663,5896,Pa Yup Nai,Wang Chan,Rayong,ป่ายุบใน,วังจันทร์,ระยอง
+250,9.1934,99.47206,5870,Kadae,Kanchanadit,Surat Thani,กะแดะ,กาญจนดิษฐ์,สุราษฎร์ธานี
+251,9.26512,99.63298,5854,Chai Khram,Don Sak,Surat Thani,ไชยคราม,ดอนสัก,สุราษฎร์ธานี
+252,16.51611,102.1764,5852,Non Udom,Chum Phae,Khon Kaen,โนนอุดม,ชุมแพ,ขอนแก่น
+253,14.8593,101.68984,5850,Mittraphap,Sikhio,Nakhon Ratchasima,มิตรภาพ,สีคิ้ว,นครราชสีมา
+254,16.03653,99.83411,5847,Saen To,Khanu Woralaksaburi,Kamphaeng Phet,แสนตอ,ขาณุวรลักษบุรี,กำแพงเพชร
+255,14.48371,105.07189,5846,Si Wichian,Nam Yuen,Ubon Ratchathani,สีวิเชียร,น้ำยืน,อุบลราชธานี
+256,13.90039,99.80021,5846,Tha Mai,Tha Maka,Kanchanaburi,ท่าไม้,ท่ามะกา,กาญจนบุรี
+257,13.0856,100.92875,5824,Thung Sukhla,Si Racha,Chon Buri,ทุ่งสุขลา,ศรีราชา,ชลบุรี
+258,7.07674,100.67229,5778,Na Thap,Chana,Songkhla,นาทับ,จะนะ,สงขลา
+259,10.56995,99.27396,5773,Saphli,Pathio,Chumphon,สะพลี,ปะทิว,ชุมพร
+260,19.59749,99.96374,5773,Chiang Khian,Thoeng,Chiang Rai,เชียงเคี่ยน,เทิง,เชียงราย
+261,13.24564,101.23302,5770,Nong I Run,Ban Bueng,Chon Buri,หนองอิรุณ,บ้านบึง,ชลบุรี
+262,8.70641,99.33446,5767,Khuan Si,Ban Na San,Surat Thani,ควนศรี,บ้านนาสาร,สุราษฎร์ธานี
+263,13.50461,100.09087,5761,Rong Khe,Ban Phaeo,Samut Sakhon,โรงเข้,บ้านแพ้ว,สมุทรสาคร
+264,13.92844,99.99653,5755,Huai Khwang,Kamphaeng Saen,Nakhon Pathom,ห้วยขวาง,กำแพงแสน,นครปฐม
+265,16.69927,102.75097,5752,Kut Nam Sai,Nam Phong,Khon Kaen,กุดน้ำใส,น้ำพอง,ขอนแก่น
+266,13.595,100.395,5744,Samae Dam,Bang Khun Thian,Bangkok,แสมดำ,บางขุนเทียน,กรุงเทพมหานคร
+267,13.95738,100.89603,5726,Phuet Udom,Lam Luk Ka,Pathum Thani,พืชอุดม,ลำลูกกา,ปทุมธานี
+268,14.80525,105.46324,5708,Phon Ngam,Buntharik,Ubon Ratchathani,โพนงาม,บุณฑริก,อุบลราชธานี
+269,18.37268,99.58964,5699,Phichai,Mueang Lampang,Lampang,พิชัย,เมืองลำปาง,ลำปาง
+270,14.24961,100.83635,5687,Nong Rong,Nong Khae,Saraburi,หนองโรง,หนองแค,สระบุรี
+271,17.31971,102.11775,5681,Thep Khiri,Na Wang,Nong Bua Lam Phu,เทพคีรี,นาวัง,หนองบัวลำภู
+272,15.50607,101.05681,5678,Phu Kham,Wichian Buri,Phetchabun,พุขาม,วิเชียรบุรี,เพชรบูรณ์
+273,16.71008,102.96411,5658,Phang Thui,Nam Phong,Khon Kaen,พังทุย,น้ำพอง,ขอนแก่น
+274,13.34478,99.89267,5655,Phraek Nam Daeng,Amphawa,Samut Songkhram,แพรกหนามแดง,อัมพวา,สมุทรสงคราม
+275,16.34238,99.85994,5647,Thung Thong,Sai Thong Watthana,Kamphaeng Phet,ทุ่งทอง,ทรายทองวัฒนา,กำแพงเพชร
+276,18.0681,99.24548,5645,Thung Ngam,Soem Ngam,Lampang,ทุ่งงาม,เสริมงาม,ลำปาง
+277,19.37906,97.87296,5628,Pang Mu,Mueang Mae Hong Son,Mae Hong Son,ปางหมู,เมืองแม่ฮ่องสอน,แม่ฮ่องสอน
+278,13.54924,101.2029,5618,Sa Si Liam,Phanat Nikhom,Chon Buri,สระสี่เหลี่ยม,พนัสนิคม,ชลบุรี
+279,14.46204,100.04822,5596,Don Pho Thong,Mueang Suphan Buri,Suphan Buri,ดอนโพธิ์ทอง,เมืองสุพรรณบุรี,สุพรรณบุรี
+280,14.34799,99.83581,5594,Chorakhe Sam Phan,U Thong,Suphan Buri,จรเข้สามพัน,อู่ทอง,สุพรรณบุรี
+281,14.00729,100.22163,5592,Khlong Nok Krathung,Bang Len,Nakhon Pathom,คลองนกกระทุง,บางเลน,นครปฐม
+282,13.30809,101.15883,5589,Nong Chak,Ban Bueng,Chon Buri,หนองชาก,บ้านบึง,ชลบุรี
+283,9.93174,99.15115,5564,Bang Maphrao,Lang Suan,Chumphon,บางมะพร้าว,หลังสวน,ชุมพร
+284,19.59696,101.08475,5562,Huai Kon,Chaloem Phra Kiat,Nan,ห้วยโก๋น,เฉลิมพระเกียรติ,น่าน
+285,6.74529,101.01049,5551,Tha Muang,Thepha,Songkhla,ท่าม่วง,เทพา,สงขลา
+286,16.19039,102.21957,5521,Lup Kha,Kaeng Khro,Chaiyaphum,หลุบคา,แก้งคร้อ,ชัยภูมิ
+287,13.53513,100.83938,5516,Khlong Dan,Bang Bo,Samut Prakan,คลองด่าน,บางบ่อ,สมุทรปราการ
+288,13.58703,100.17794,5514,Amphaeng,Ban Phaeo,Samut Sakhon,อำแพง,บ้านแพ้ว,สมุทรสาคร
+289,9.22066,99.22144,5513,Tha Khoei,Tha Chang,Surat Thani,ท่าเคย,ท่าฉาง,สุราษฎร์ธานี
+290,8.12459,99.86206,5511,Thung Pho,Chulabhorn,Nakhon Si Thammarat,ทุ่งโพธิ์,จุฬาภรณ์,นครศรีธรรมราช
+291,18.24894,98.60912,5510,Ban Pae,Chom Thong,Chiang Mai,บ้านแปะ,จอมทอง,เชียงใหม่
+292,15.93304,105.19762,5508,Phang Khen,Na Tan,Ubon Ratchathani,พังเคน,นาตาล,อุบลราชธานี
+293,16.53833,104.39833,5504,Khamcha-I,Khamcha-I,Mukdahan,คำชะอี,คำชะอี,มุกดาหาร
+294,17.55529,103.41001,5504,Ban Thon,Sawang Daen Din,Sakon Nakhon,บ้านถ่อน,สว่างแดนดิน,สกลนคร
+295,16.36561,99.34323,5496,Sak Ngam,Khlong Lan,Kamphaeng Phet,สักงาม,คลองลาน,กำแพงเพชร
+296,14.85415,100.91855,5492,Di Lang,Phatthana Nikhom,Lop Buri,ดีลัง,พัฒนานิคม,ลพบุรี
+297,14.74179,100.10126,5492,Sam Chuk,Sam Chuk,Suphan Buri,สามชุก,สามชุก,สุพรรณบุรี
+298,13.62,100.10417,5487,Ban Phaeo,Ban Phaeo,Samut Sakhon,บ้านแพ้ว,บ้านแพ้ว,สมุทรสาคร
+299,13.18317,100.98973,5480,Bang Phra,Si Racha,Chon Buri,บางพระ,ศรีราชา,ชลบุรี
+300,15.3725,102.3775,5459,Kham Sombun,Khong,Nakhon Ratchasima,ขามสมบูรณ์,คง,นครราชสีมา
+301,14.84641,101.58229,5458,Khlong Phai,Sikhio,Nakhon Ratchasima,คลองไผ่,สีคิ้ว,นครราชสีมา
+302,7.02714,100.37721,5455,Tha Chang,Bang Klam,Songkhla,ท่าช้าง,บางกล่ำ,สงขลา
+303,20.16652,99.99501,5434,Tha Khao Plueak,Mae Chan,Chiang Rai,ท่าข้าวเปลือก,แม่จัน,เชียงราย
+304,15.41521,101.83732,5429,Nong Bua Khok,Chatturat,Chaiyaphum,หนองบัวโคก,จัตุรัส,ชัยภูมิ
+305,13.85083,102.04333,5427,Sa Kaeo,Mueang Sa Kaeo,Sa Kaeo,สระแก้ว,เมืองสระแก้ว,สระแก้ว
+306,13.4775,101.23084,5427,Nong Hiang,Phanat Nikhom,Chon Buri,หนองเหียง,พนัสนิคม,ชลบุรี
+307,14.33638,100.21504,5355,Sali,Bang Pla Ma,Suphan Buri,สาลี,บางปลาม้า,สุพรรณบุรี
+308,12.83728,101.15258,5355,Nikhom Phatthana,Nikhom Phatthana,Rayong,นิคมพัฒนา,นิคมพัฒนา,ระยอง
+309,13.82874,101.67792,5352,Lat Takhian,Kabin Buri,Prachin Buri,ลาดตะเคียน,กบินทร์บุรี,ปราจีนบุรี
+310,16.62138,100.5867,5351,Phan Chali,Wang Thong,Phitsanulok,พันชาลี,วังทอง,พิษณุโลก
+311,14.64563,101.29262,5349,Klang Dong,Pak Chong,Nakhon Ratchasima,กลางดง,ปากช่อง,นครราชสีมา
+312,8.54326,99.94821,5349,Pak Phun,Mueang Nakhon Si Thammarat,Nakhon Si Thammarat,ปากพูน,นครศรีธรรมราช,นครศรีธรรมราช
+313,14.05495,100.72308,5347,Khlong Hok,Khlong Luang,Pathum Thani,คลองหก,คลองหลวง,ปทุมธานี
+314,13.54393,100.57198,5342,Laem Fa Pha,Phra Samut Chedi,Samut Prakan,แหลมฟ้าผ่า,พระสมุทรเจดีย์,สมุทรปราการ
+315,7.98071,98.33326,5320,Si Sunthon,Thalang,Phuket,ศรีสุนทร,ถลาง,ภูเก็ต
+316,12.64677,101.47851,5319,Klaeng,Mueang Rayong,Rayong,แกลง,เมืองระยอง,ระยอง
+317,14.52908,99.46427,5315,Nong Ri,Bo Phloi,Kanchanaburi,หนองรี,บ่อพลอย,กาญจนบุรี
+318,13.73664,102.37892,5309,Phak Kha,Watthana Nakhon,Sa Kaeo,ผักขะ,วัฒนานคร,สระแก้ว
+319,14.1347,100.66163,5302,Khlong Sam,Khlong Luang,Pathum Thani,คลองสาม,คลองหลวง,ปทุมธานี
+320,6.77057,101.1723,5301,Bo Thong,Nong Chik,Pattani,บ่อทอง,หนองจิก,ปัตตานี
+321,8.09253,98.99061,5292,Nuea Khlong,Nuea Khlong,Krabi,เหนือคลอง,เหนือคลอง,กระบี่
+322,16.54911,104.6703,5288,Mukdahan,Mueang Mukdahan,Mukdahan,มุกดาหาร,เมืองมุกดาหาร,มุกดาหาร
+323,15.7169,100.05971,5287,Nakhon Sawan Tok,Mueang Nakhon Sawan,Nakhon Sawan,นครสวรรค์ตก,เมืองนครสวรรค์,นครสวรรค์
+324,12.62411,101.39385,5280,Phe,Mueang Rayong,Rayong,เพ,เมืองระยอง,ระยอง
+325,17.4323,99.8121,5280,Tha Chai,Si Satchanalai,Sukhothai,ท่าชัย,ศรีสัชนาลัย,สุโขทัย
+326,13.80083,102.13333,5272,Tha Kasem,Mueang Sa Kaeo,Sa Kaeo,ท่าเกษม,เมืองสระแก้ว,สระแก้ว
+327,6.83667,100.96833,5265,Thepha,Thepha,Songkhla,เทพา,เทพา,สงขลา
+328,7.75054,100.36606,5243,Pak Trae,Ranot,Songkhla,ปากแตระ,ระโนด,สงขลา
+329,14.59202,101.01716,5239,Ban Pa,Kaeng Khoi,Saraburi,บ้านป่า,แก่งคอย,สระบุรี
+330,19.95689,99.88321,5202,Ban Du,Mueang Chiang Rai,Chiang Rai,บ้านดู่,เมืองเชียงราย,เชียงราย
+331,13.5285,99.75095,5193,Huai Phai,Mueang Ratchaburi,Ratchaburi,ห้วยไผ่,เมืองราชบุรี,ราชบุรี
+332,16.85572,100.48634,5184,Chai Nam,Wang Thong,Phitsanulok,ชัยนาม,วังทอง,พิษณุโลก
+333,14.0578,101.79327,5182,Nong Ki,Kabin Buri,Prachin Buri,หนองกี่,กบินทร์บุรี,ปราจีนบุรี
+334,14.03454,100.10166,5179,Lam Luk Bua,Don Tum,Nakhon Pathom,ลำลูกบัว,ดอนตูม,นครปฐม
+335,19.58083,98.60833,5155,Mueang Haeng,Wiang Haeng,Chiang Mai,เมืองแหง,เวียงแหง,เชียงใหม่
+336,13.57759,100.94139,5154,Bang Samak,Bang Pakong,Chachoengsao,บางสมัคร,บางปะกง,ฉะเชิงเทรา
+337,14.85167,102.36,5126,Si Suk,Chakkarat,Nakhon Ratchasima,สีสุก,จักราช,นครราชสีมา
+338,8.14875,98.33833,5119,Mai Khao,Thalang,Phuket,ไม้ขาว,ถลาง,ภูเก็ต
+339,16.10315,102.5439,5115,Kut Khao,Mancha Khiri,Khon Kaen,กุดเค้า,มัญจาคีรี,ขอนแก่น
+340,15.01143,99.6229,5088,Thap Luang,Ban Rai,Uthai Thani,ทัพหลวง,บ้านไร่,อุทัยธานี
+341,13.36,99.9275,5080,Yi San,Amphawa,Samut Songkhram,ยี่สาร,อัมพวา,สมุทรสงคราม
+342,14.00268,100.77649,5073,Lam Luk Ka,Lam Luk Ka,Pathum Thani,ลำลูกกา,ลำลูกกา,ปทุมธานี
+343,12.73024,99.95377,5069,Cha-Am,Cha-Am,Phetchaburi,ชะอำ,ชะอำ,เพชรบุรี
+344,14.59287,102.00458,5059,Phu Luang,Pak Thong Chai,Nakhon Ratchasima,ภูหลวง,ปักธงชัย,นครราชสีมา
+345,14.93676,103.90181,5050,Ko Kaeo,Samrong Thap,Surin,เกาะแก้ว,สำโรงทาบ,สุรินทร์
+346,14.8431,105.11002,5041,Klang,Det Udom,Ubon Ratchathani,กลาง,เดชอุดม,อุบลราชธานี
+347,14.52918,100.85894,5026,Suan Dokmai,Sao Hai,Saraburi,สวนดอกไม้,เสาไห้,สระบุรี
+348,16.14468,99.68166,5025,Khlong Khlung,Khlong Khlung,Kamphaeng Phet,คลองขลุง,คลองขลุง,กำแพงเพชร
+349,15.2225,105.24833,5024,Kut Chomphu,Phibun Mangsahan,Ubon Ratchathani,กุดชมภู,พิบูลมังสาหาร,อุบลราชธานี
+350,16.46538,100.24003,5022,Sam Ngam,Sam Ngam,Phichit,สามง่าม,สามง่าม,พิจิตร
+351,14.5683,102.18675,5016,Oraphim,Khon Buri,Nakhon Ratchasima,อรพิมพ์,ครบุรี,นครราชสีมา
+352,6.27167,101.80539,5011,Chuap,Cho-Airong,Narathiwat,จวบ,เจาะไอร้อง,นราธิวาส
+353,6.48469,101.43738,5008,Kayu Boko,Raman,Yala,กายูบอเกาะ,รามัน,ยะลา
+354,14.74046,102.09415,4998,Khok Thai,Pak Thong Chai,Nakhon Ratchasima,โคกไทย,ปักธงชัย,นครราชสีมา
+355,15.25213,101.99387,4991,Phang Thiam,Phra Thong Kham,Nakhon Ratchasima,พังเทียม,พระทองคำ,นครราชสีมา
+356,12.079,99.85438,4988,Kui Buri,Kui Buri,Prachuap Khiri Khan,กุยบุรี,กุยบุรี,ประจวบคีรีขันธ์
+357,6.51578,100.98936,4985,Cha Nae,Saba Yoi,Songkhla,จะแหน,สะบ้าย้อย,สงขลา
+358,12.36002,99.88422,4984,Nong Ta Taem,Pran Buri,Prachuap Khiri Khan,หนองตาแต้ม,ปราณบุรี,ประจวบคีรีขันธ์
+359,13.15885,101.30051,4974,Hang Sung,Nong Yai,Chon Buri,ห้างสูง,หนองใหญ่,ชลบุรี
+360,13.66864,100.90864,4968,Khlong Suan,Bang Bo,Samut Prakan,คลองสวน,บางบ่อ,สมุทรปราการ
+361,12.74484,101.2842,4963,Nong Taphan,Ban Khai,Rayong,หนองตะพาน,บ้านค่าย,ระยอง
+362,13.78456,102.19846,4962,Huai Chot,Watthana Nakhon,Sa Kaeo,ห้วยโจด,วัฒนานคร,สระแก้ว
+363,11.8409,99.81145,4957,Ao Noi,Mueang Prachuap Khiri Khan,Prachuap Khiri Khan,อ่าวน้อย,เมืองประจวบคีรีข,ประจวบคีรีขันธ์
+364,15.82023,104.12259,4955,Samran,Mueang Yasothon,Yasothon,สำราญ,เมืองยโสธร,ยโสธร
+365,13.61336,100.47565,4952,Tha Kham,Bang Khun Thian,Bangkok,ท่าข้าม,บางขุนเทียน,กรุงเทพมหานคร
+366,13.67051,100.38372,4944,Bang Bon Nuea,Bang Bon,Bangkok,บางบอนเหนือ,บางบอน,กรุงเทพมหานคร
+367,15.00367,102.05428,4942,Pru Yai,Mueang Nakhon Ratchasima,Nakhon Ratchasima,ปรุใหญ่,เมืองนครราชสีมา,นครราชสีมา
+368,15.75332,102.60503,4925,Non Kha,Phon,Khon Kaen,โนนข่า,พล,ขอนแก่น
+369,14.89144,101.90298,4924,Na Klang,Sung Noen,Nakhon Ratchasima,นากลาง,สูงเนิน,นครราชสีมา
+370,8.38937,100.01521,4910,Tha Ruea,Mueang Nakhon Si Thammarat,Nakhon Si Thammarat,ท่าเรือ,นครศรีธรรมราช,นครศรีธรรมราช
+371,10.65025,98.86366,4904,Cho Po Ro,Kra Buri,Ranong,จ.ป.ร.,กระบุรี,ระนอง
+372,20.0987,99.53824,4897,Pa Tueng,Mae Chan,Chiang Rai,ป่าตึง,แม่จัน,เชียงราย
+373,6.61801,101.24016,4897,Yu Po,Mueang Yala,Yala,ยุโป,เมืองยะลา,ยะลา
+374,6.40022,101.52681,4886,Rueso Ok,Rueso,Narathiwat,รือเสาะออก,รือเสาะ,นราธิวาส
+375,6.44444,101.67553,4880,Tapo Yo,Yi-Ngo,Narathiwat,ตะปอเยาะ,ยี่งอ,นราธิวาส
+376,19.24385,99.18546,4865,Mae Pang,Phrao,Chiang Mai,แม่ปั๋ง,พร้าว,เชียงใหม่
+377,7.06314,100.37528,4821,Tha Chang,Bang Klam,Songkhla,ท่าช้าง,บางกล่ำ,สงขลา
+378,14.31002,100.52304,4817,Pak Kran,Phra Nakhon Si Ayutthaya,Phra Nakhon Si Ayutthaya,ปากกราน,พระนครศรีอยุธยา,พระนครศรีอยุธยา
+379,16.13708,100.76708,4816,Tha Kham,Chon Daen,Phetchabun,ท่าข้าม,ชนแดน,เพชรบูรณ์
+380,9.78664,98.5903,4813,Ratchakrut,Mueang Ranong,Ranong,ราชกรูด,เมืองระนอง,ระนอง
+381,14.87329,103.37207,4799,Nong Teng,Krasang,Buri Ram,หนองเต็ง,กระสัง,บุรีรัมย์
+382,14.23086,100.87999,4797,Noppharat,Nong Suea,Pathum Thani,นพรัตน์,หนองเสือ,ปทุมธานี
+383,13.55535,101.12953,4793,Khok Khi Non,Phan Thong,Chon Buri,โคกขี้หนอน,พานทอง,ชลบุรี
+384,19.88262,100.28232,4779,Yang Hom,Khun Tan,Chiang Rai,ยางฮอม,ขุนตาล,เชียงราย
+385,17.3219,100.0121,4778,Kho Rum,Phichai,Uttaradit,คอรุม,พิชัย,อุตรดิตถ์
+386,6.5925,101.43,4777,Tha Thong,Raman,Yala,ท่าธง,รามัน,ยะลา
+387,14.48833,102.31125,4773,Tabaek Ban,Khon Buri,Nakhon Ratchasima,ตะแบกบาน,ครบุรี,นครราชสีมา
+388,13.36653,101.20989,4773,Thung Khwang,Phanat Nikhom,Chon Buri,ทุ่งขวาง,พนัสนิคม,ชลบุรี
+389,13.43312,101.29228,4759,Na Wang Hin,Phanat Nikhom,Chon Buri,นาวังหิน,พนัสนิคม,ชลบุรี
+390,15.16976,104.80547,4745,Non Phueng,Warin Chamrap,Ubon Ratchathani,โนนผึ้ง,วารินชำราบ,อุบลราชธานี
+391,17.68685,103.19974,4736,Ban Dung,Ban Dung,Udon Thani,บ้านดุง,บ้านดุง,อุดรธานี
+392,9.77667,99.09417,4731,Thung Luang,Lamae,Chumphon,ทุ่งหลวง,ละแม,ชุมพร
+393,14.62003,102.01957,4725,Sakae Rat,Pak Thong Chai,Nakhon Ratchasima,สะแกราช,ปักธงชัย,นครราชสีมา
+394,12.91536,99.86757,4718,Tha Khoi,Tha Yang,Phetchaburi,ท่าคอย,ท่ายาง,เพชรบุรี
+395,8.64007,99.94849,4708,Tha Sala,Tha Sala,Nakhon Si Thammarat,ท่าศาลา,ท่าศาลา,นครศรีธรรมราช
+396,13.00824,101.00039,4695,Takhian Tia,Bang Lamung,Chon Buri,ตะเคียนเตี้ย,บางละมุง,ชลบุรี
+397,18.75487,99.57174,4694,Wichet Nakhon,Chae Hom,Lampang,วิเชตนคร,แจ้ห่ม,ลำปาง
+398,14.77924,101.94383,4689,Takhu,Pak Thong Chai,Nakhon Ratchasima,ตะคุ,ปักธงชัย,นครราชสีมา
+399,15.43583,104.30417,4686,Kut Nam Sai,Kho Wang,Yasothon,กุดน้ำใส,ค้อวัง,ยโสธร
+400,13.36958,101.0165,4686,Na Pa,Mueang Chon Buri,Chon Buri,นาป่า,เมืองชลบุรี,ชลบุรี
+401,13.84333,100.87083,4684,Krathum Rai,Nong Chok,Bangkok,กระทุ่มราย,หนองจอก,กรุงเทพมหานคร
+402,15.82753,100.11913,4674,Maha Phot,Kao Liao,Nakhon Sawan,มหาโพธิ,เก้าเลี้ยว,นครสวรรค์
+403,15.00362,100.07975,4656,Wang Kai Thuean,Hankha,Chai Nat,วังไก่เถื่อน,หันคา,ชัยนาท
+404,15.06396,100.88465,4656,Wang Phloeng,Khok Samrong,Lop Buri,วังเพลิง,โคกสำโรง,ลพบุรี
+405,16.05235,102.77601,4656,Hin Tang,Ban Phai,Khon Kaen,หินตั้ง,บ้านไผ่,ขอนแก่น
+406,13.45782,100.99198,4645,Khlong Tamru,Mueang Chon Buri,Chon Buri,คลองตำหรุ,เมืองชลบุรี,ชลบุรี
+407,17.99667,98.35333,4644,Omkoi,Omkoi,Chiang Mai,อมก๋อย,อมก๋อย,เชียงใหม่
+408,17.35281,102.94306,4643,Phon Ngam,Nong Han,Udon Thani,โพนงาม,หนองหาน,อุดรธานี
+409,17.17367,102.44474,4631,Nong Bua,Mueang Nong Bua Lam Phu,Nong Bua Lam Phu,หนองบัว,เมืองหนองบัวลำภู,หนองบัวลำภู
+410,14.1125,101.90667,4630,Thung Pho,Na Di,Prachin Buri,ทุ่งโพธิ์,นาดี,ปราจีนบุรี
+411,8.58327,99.09182,4626,Sai Sopha,Phrasaeng,Surat Thani,ไทรโสภา,พระแสง,สุราษฎร์ธานี
+412,8.68596,98.78853,4624,Khlong Cha-Un,Phanom,Surat Thani,คลองชะอุ่น,พนม,สุราษฎร์ธานี
+413,13.75374,101.4239,4620,Khao Hin Son,Phanom Sarakham,Chachoengsao,เขาหินซ้อน,พนมสารคาม,ฉะเชิงเทรา
+414,13.0861,101.08733,4612,Bo Win,Si Racha,Chon Buri,บ่อวิน,ศรีราชา,ชลบุรี
+415,7.08004,100.55519,4608,Tha Kham,Hat Yai,Songkhla,ท่าข้าม,หาดใหญ่,สงขลา
+416,16.4821,100.70833,4604,Wang Yang,Noen Maprang,Phitsanulok,วังยาง,เนินมะปราง,พิษณุโลก
+417,17.01417,99.92167,4604,Ban Suan,Mueang Sukhothai,Sukhothai,บ้านสวน,เมืองสุโขทัย,สุโขทัย
+418,13.14172,100.81246,4598,Tha Thewawong,Ko Si Chang,Chon Buri,ท่าเทววงษ์,เกาะสีชัง,ชลบุรี
+419,6.96231,100.70171,4586,Khlong Pia,Chana,Songkhla,คลองเปียะ,จะนะ,สงขลา
+420,13.64982,102.19723,4584,Tha Kwian,Watthana Nakhon,Sa Kaeo,ท่าเกวียน,วัฒนานคร,สระแก้ว
+421,14.16673,100.11897,4581,Bang Len,Song Phi Nong,Suphan Buri,บางเลน,สองพี่น้อง,สุพรรณบุรี
+422,14.0246,100.27639,4562,Khun Si,Sai Noi,Nonthaburi,ขุนศรี,ไทรน้อย,นนทบุรี
+423,15.05784,101.0902,4561,Tha Luang,Tha Luang,Lop Buri,ท่าหลวง,ท่าหลวง,ลพบุรี
+424,14.92711,102.1741,4541,Nong Rawiang,Mueang Nakhon Ratchasima,Nakhon Ratchasima,หนองระเวียง,เมืองนครราชสีมา,นครราชสีมา
+425,14.67048,101.44225,4537,Pak Chong,Pak Chong,Nakhon Ratchasima,ปากช่อง,ปากช่อง,นครราชสีมา
+426,6.11665,101.87529,4534,To Deng,Su-Ngai Padi,Narathiwat,โต๊ะเด็ง,สุไหงปาดี,นราธิวาส
+427,6.42486,101.78946,4533,Lamphu,Mueang Narathiwat,Narathiwat,ลำภู,เมืองนราธิวาส,นราธิวาส
+428,14.85515,100.8006,4530,Khok Tum,Mueang Lop Buri,Lop Buri,โคกตูม,เมืองลพบุรี,ลพบุรี
+429,14.8294,104.88725,4528,Thung Thoeng,Det Udom,Ubon Ratchathani,ทุ่งเทิง,เดชอุดม,อุบลราชธานี
+430,7.01168,100.72286,4510,Na Thap,Chana,Songkhla,นาทับ,จะนะ,สงขลา
+431,14.09884,100.867,4503,Nong Sam Wang,Nong Suea,Pathum Thani,หนองสามวัง,หนองเสือ,ปทุมธานี
+432,14.39435,99.12623,4494,Tha Kradan,Si Sawat,Kanchanaburi,ท่ากระดาน,ศรีสวัสดิ์,กาญจนบุรี
+433,13.99,100.83792,4492,Bueng Thong Lang,Lam Luk Ka,Pathum Thani,บึงทองหลาง,ลำลูกกา,ปทุมธานี
+434,6.89745,100.125,4491,Thung Nui,Khuan Kalong,Satun,ทุ่งนุ้ย,ควนกาหลง,สตูล
+435,16.4602,102.77571,4487,Ban Pet,Mueang Khon Kaen,Khon Kaen,บ้านเป็ด,เมืองขอนแก่น,ขอนแก่น
+436,12.74564,100.96383,4485,Na Chom Thian,Sattahip,Chon Buri,นาจอมเทียน,สัตหีบ,ชลบุรี
+437,14.81101,99.70408,4483,Nong Kham,Nong Ya Sai,Suphan Buri,หนองขาม,หนองหญ้าไซ,สุพรรณบุรี
+438,8.49896,98.8852,4480,Plai Phraya,Plai Phraya,Krabi,ปลายพระยา,ปลายพระยา,กระบี่
+439,13.35777,99.82413,4478,Don Sai,Pak Tho,Ratchaburi,ดอนทราย,ปากท่อ,ราชบุรี
+440,15.404,99.53217,4477,Pa O,Lan Sak,Uthai Thani,ป่าอ้อ,ลานสัก,อุทัยธานี
+441,17.45985,102.19493,4473,Dong Sawan,Na Klang,Nong Bua Lam Phu,ดงสวรรค์,นากลาง,หนองบัวลำภู
+442,12.37246,99.99389,4473,Pak Nam Pran,Pran Buri,Prachuap Khiri Khan,ปากน้ำปราณ,ปราณบุรี,ประจวบคีรีขันธ์
+443,16.59434,101.20532,4471,Ban Rai,Lom Sak,Phetchabun,บ้านไร่,หล่มสัก,เพชรบูรณ์
+444,15.09771,102.2527,4470,Don Wai,Non Sung,Nakhon Ratchasima,ดอนหวาย,โนนสูง,นครราชสีมา
+445,14.25698,100.94883,4466,Sala Khru,Nong Suea,Pathum Thani,ศาลาครุ,หนองเสือ,ปทุมธานี
+446,10.5555,98.90183,4462,Cho Po Ro,Kra Buri,Ranong,จ.ป.ร.,กระบุรี,ระนอง
+447,16.74557,100.09414,4461,Bang Rakam,Bang Rakam,Phitsanulok,บางระกำ,บางระกำ,พิษณุโลก
+448,14.943,103.13903,4460,Sawai Chik,Mueang Buri Ram,Buri Ram,สวายจีก,เมืองบุรีรัมย์,บุรีรัมย์
+449,8.96109,98.8053,4460,Khao Phang,Ban Ta Khun,Surat Thani,เขาพัง,บ้านตาขุน,สุราษฎร์ธานี
+450,6.20387,101.45827,4452,Kalong,Si Sakhon,Narathiwat,กาหลง,ศรีสาคร,นราธิวาส
+451,8.25205,98.30168,4450,Khok Kloi,Takua Thung,Phangnga,โคกกลอย,ตะกั่วทุ่ง,พังงา
+452,17.61135,102.55865,4449,Kham Bong,Ban Phue,Udon Thani,คำบง,บ้านผือ,อุดรธานี
+453,13.78083,101.5225,4448,Khao Hin Son,Phanom Sarakham,Chachoengsao,เขาหินซ้อน,พนมสารคาม,ฉะเชิงเทรา
+454,13.91417,102.09333,4447,Khok Pi Khong,Mueang Sa Kaeo,Sa Kaeo,โคกปี่ฆ้อง,เมืองสระแก้ว,สระแก้ว
+455,13.42485,100.03849,4445,Bang Kaeo,Mueang Samut Songkhram,Samut Songkhram,บางแก้ว,เมืองสมุทรสงคราม,สมุทรสงคราม
+456,18.49499,98.9973,4445,Nong Nam,Mueang Lamphun,Lamphun,หนองหนาม,เมืองลำพูน,ลำพูน
+457,16.48839,102.49747,4441,Nong Ruea,Nong Ruea,Khon Kaen,หนองเรือ,หนองเรือ,ขอนแก่น
+458,17.36005,103.22194,4441,Ban Chiang,Nong Han,Udon Thani,บ้านเชียง,หนองหาน,อุดรธานี
+459,15.04874,102.40667,4439,Chakkarat,Chakkarat,Nakhon Ratchasima,จักราช,จักราช,นครราชสีมา
+460,14.5461,105.01261,4437,Bu Pueai,Nam Yuen,Ubon Ratchathani,บุเปือย,น้ำยืน,อุบลราชธานี
+461,13.32539,101.08264,4433,Nong Samsak,Ban Bueng,Chon Buri,หนองซ้ำซาก,บ้านบึง,ชลบุรี
+462,12.76084,101.64517,4428,Wang Wa,Klaeng,Rayong,วังหว้า,แกลง,ระยอง
+463,14.71642,103.66942,4419,Lamduan,Lamduan,Surin,ลำดวน,ลำดวน,สุรินทร์
+464,16.18409,99.71273,4414,Khlong Khlung,Khlong Khlung,Kamphaeng Phet,คลองขลุง,คลองขลุง,กำแพงเพชร
+465,14.71411,100.89738,4397,Na Phralan,Chaloem Phra Kiat,Saraburi,หน้าพระลาน,เฉลิมพระเกียรติ,สระบุรี
+466,15.8121,105.28,4396,Pho Sai,Pho Sai,Ubon Ratchathani,โพธิ์ไทร,โพธิ์ไทร,อุบลราชธานี
+467,16.1624,102.75117,4390,Khok Samran,Ban Haet,Khon Kaen,โคกสำราญ,บ้านแฮด,ขอนแก่น
+468,17.03009,104.33575,4389,Maet Na Thom,Khok Si Suphan,Sakon Nakhon,แมดนาท่ม,โคกศรีสุพรรณ,สกลนคร
+469,18.28967,99.42545,4387,Pong Saen Thong,Mueang Lampang,Lampang,ปงแสนทอง,เมืองลำปาง,ลำปาง
+470,14.63085,105.22383,4385,Ban Tum,Na Chaluai,Ubon Ratchathani,บ้านตูม,นาจะหลวย,อุบลราชธานี
+471,15.45443,99.81786,4385,Nong Sa,Thap Than,Uthai Thani,หนองสระ,ทัพทัน,อุทัยธานี
+472,15.04186,104.97733,4384,Na Di,Na Yia,Ubon Ratchathani,นาดี,นาเยีย,อุบลราชธานี
+473,7.55602,100.42035,4379,Sanam Chai,Sathing Phra,Songkhla,สนามชัย,สทิงพระ,สงขลา
+474,10.50019,99.07302,4373,Wang Mai,Mueang Chumphon,Chumphon,วังใหม่,เมืองชุมพร,ชุมพร
+475,17.43795,103.582,4373,Phan Na,Sawang Daen Din,Sakon Nakhon,พันนา,สว่างแดนดิน,สกลนคร
+476,14.17034,100.85635,4367,Sala Khru,Nong Suea,Pathum Thani,ศาลาครุ,หนองเสือ,ปทุมธานี
+477,18.83114,99.23202,4366,Ban Sahakon,Mae On,Chiang Mai,บ้านสหกรณ์,แม่ออน,เชียงใหม่
+478,10.84227,99.22527,4357,Salui,Tha Sae,Chumphon,สลุย,ท่าแซะ,ชุมพร
+479,16.4704,103.63882,4355,Muang Na,Don Chan,Kalasin,ม่วงนา,ดอนจาน,กาฬสินธุ์
+480,13.95966,101.81583,4346,Bo Thong,Kabin Buri,Prachin Buri,บ่อทอง,กบินทร์บุรี,ปราจีนบุรี
+481,15.04218,100.17181,4343,Phraek Si Racha,Sankhaburi,Chai Nat,แพรกศรีราชา,สรรคบุรี,ชัยนาท
+482,13.74242,100.8537,4333,Khum Thong,Lat Krabang,Bangkok,ขุมทอง,ลาดกระบัง,กรุงเทพมหานคร
+483,7.85917,99.65627,4327,Tha Ngio,Huai Yot,Trang,ท่างิ้ว,ห้วยยอด,ตรัง
+484,18.34364,103.67927,4327,Bueng Kan,Mueang Bueng Kan,Bueng Kan,บึงกาฬ,เมืองบึงกาฬ,บึงกาฬ
+485,12.95187,101.10898,4326,Map Yang Phon,Pluak Daeng,Rayong,มาบยางพร,ปลวกแดง,ระยอง
+486,13.75444,101.99333,4323,Sa Khwan,Mueang Sa Kaeo,Sa Kaeo,สระขวัญ,เมืองสระแก้ว,สระแก้ว
+487,20.15208,100.045,4315,Tha Khao Plueak,Mae Chan,Chiang Rai,ท่าข้าวเปลือก,แม่จัน,เชียงราย
+488,16.13292,100.2275,4313,Thai Nam,Pho Thale,Phichit,ท้ายน้ำ,โพทะเล,พิจิตร
+489,15.25712,102.61424,4307,Bot,Phimai,Nakhon Ratchasima,โบสถ์,พิมาย,นครราชสีมา
+490,17.95562,98.67742,4306,Tha Duea,Doi Tao,Chiang Mai,ท่าเดื่อ,ดอยเต่า,เชียงใหม่
+491,7.08671,100.19366,4293,Khao Phra,Rattaphum,Songkhla,เขาพระ,รัตภูมิ,สงขลา
+492,16.75182,102.82172,4288,Nam Phong,Nam Phong,Khon Kaen,น้ำพอง,น้ำพอง,ขอนแก่น
+493,8.53355,99.23048,4286,Sin Pun,Phrasaeng,Surat Thani,สินปุน,พระแสง,สุราษฎร์ธานี
+494,14.83227,105.29705,4278,Na Pho,Buntharik,Ubon Ratchathani,นาโพธิ์,บุณฑริก,อุบลราชธานี
+495,10.50007,99.23989,4270,Na Thung,Mueang Chumphon,Chumphon,นาทุ่ง,เมืองชุมพร,ชุมพร
+496,12.68693,102.00027,4258,Song Phi Nong,Tha Mai,Chanthaburi,สองพี่น้อง,ท่าใหม่,จันทบุรี
+497,13.25102,101.19816,4244,Nong I Run,Ban Bueng,Chon Buri,หนองอิรุณ,บ้านบึง,ชลบุรี
+498,15.33347,104.8419,4243,Kham Yai,Mueang Ubon Ratchathani,Ubon Ratchathani,ขามใหญ่,เมืองอุบลราชธานี,อุบลราชธานี
+499,14.92939,103.76554,4243,Ra-Ngaeng,Sikhoraphum,Surin,ระแงง,ศีขรภูมิ,สุรินทร์
+500,14.31884,100.43976,4234,Namtao,Bang Ban,Phra Nakhon Si Ayutthaya,น้ำเต้า,บางบาล,พระนครศรีอยุธยา

@@ -1,84 +1,259 @@
 <!doctype html>
-<html lang="th">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spatial Coverage — Thailand Primary Care</title>
-
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f15">
+  <meta name="description" content="Did Thailand's contracted private primary-care units reach the people the public network left out? Distance, road travel time, area wealth and a planner benchmark, 2024–2026.">
+  <title>Who the Market Reached — Thailand Primary Care Access</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Serif+Display&family=Prompt:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
-
 <body>
-  <div id="map">
-    <aside id="sidebar">
-      <div class="panel">
-        <div class="title-block">
-          <span class="eyebrow">Thailand · Primary Care System</span>
-          <h1>Spatial Coverage</h1>
-          <h2>Population living within reach of a primary care facility</h2>
+  <a class="skip" href="#story">Skip to the story</a>
+  <header class="topbar">
+    <a class="brand" href="#top">Thailand Primary Care Access</a>
+    <nav class="toc" aria-label="Sections">
+      <a href="#s-network" data-steps="network where">Expansion</a>
+      <a href="#s-exit" data-steps="exit">Exits</a>
+      <a href="#s-equity" data-steps="equity">Who gained</a>
+      <a href="#s-far" data-steps="far avail">Who is far</a>
+      <a href="#s-planner" data-steps="planner next">Planner</a>
+      <a href="#methods" data-steps="">Methods</a>
+    </nav>
+    <button id="lang" class="pill" aria-pressed="true" title="Show or hide the Thai text"><span class="tick" aria-hidden="true">✓</span>ไทย</button>
+    <span class="badge" title="Numbers are preliminary; the working paper is in preparation"><span class="badge-long">Preliminary results</span><span class="badge-short">Preliminary</span></span>
+  </header>
+  <div id="error" class="error" role="alert" hidden>The data for this page could not be loaded. Please reload; if it persists, the numbers below are missing, not zero.</div>
+
+  <section class="hero container" id="top">
+    <div class="hero-main">
+      <p class="kicker">Thailand · Universal Coverage Scheme · fiscal years 2024–2026</p>
+      <h1>Did contracted private units reach the people the public network left out?</h1>
+      <p class="th hero-th" lang="th">หน่วยบริการเอกชนที่รัฐซื้อบริการ ไปถึงคนที่เครือข่ายรัฐเข้าไม่ถึงหรือไม่</p>
+      <p class="byline">Peerasit Sitthirat et al. · Health Policy and Systems Research, Ramathibodi · Updated <span data-f="updated" data-fmt="raw"></span> · v1.0, preliminary</p>
+      <p class="lede">In fiscal years 2024–25 the scheme grew its primary-care network by contracting
+        <span data-f="entrants" data-fmt="int"></span> more <em>innovation units</em> (private nurse clinics, pharmacies and
+        medical clinics) instead of building public ones. This page tests where they went, who they reached,
+        and how a planner would have done with the same number of sites.</p>
+      <p class="th" lang="th">ปีงบ 2567–68 บัตรทองขยายเครือข่ายปฐมภูมิด้วยการซื้อบริการจากหน่วยบริการนวัตกรรมเพิ่มอีก
+        <span data-f="entrants" data-fmt="int"></span> แห่ง (คลินิกการพยาบาล ร้านยา และคลินิกเวชกรรมเอกชน) แทนการสร้างหน่วยรัฐใหม่ หน้านี้ดูว่าหน่วยเหล่านี้ไปตั้งที่ไหน ไปถึงใคร
+        และถ้าผู้วางแผนวางหน่วยจำนวนเท่ากัน จะได้ผลต่างกันเท่าไร</p>
+    </div>
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-num"><span data-f="market_share_of_planner_pct" data-fmt="pct0"></span></div>
+        <div class="kpi-label">The units that joined reached this share of the people a planner would have brought within 2 km with the same number of units
+          <span class="th" lang="th">หน่วยที่เข้าจริงพาคนเข้าระยะ 2 กม. ได้เท่านี้ เมื่อเทียบกับผู้วางแผนที่ใช้หน่วยเท่ากัน</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num"><span data-f="entrants_left_pct_nurse" data-fmt="pct0"></span></div>
+        <div class="kpi-label">of the nurse clinics that joined in 2024–25 were no longer innovation units by November 2026
+          <span class="th" lang="th">ของคลินิกการพยาบาลที่เข้าปีงบ 2567–68 ไม่อยู่ในประเภทหน่วยนวัตกรรมแล้วใน พ.ย. 2569</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num"><span data-f="walk30_Q1" data-fmt="pct0"></span> <small>vs</small> <span data-f="walk30_Q5" data-fmt="pct0"></span></div>
+        <div class="kpi-label">of the poorest and the richest fifth of people can walk to a unit within 30 minutes
+          <span class="th" lang="th">ของคนกลุ่มจนที่สุดและรวยที่สุด ที่เดินถึงหน่วยได้ใน 30 นาที</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="story container" id="story" tabindex="-1">
+    <div class="steps">
+
+      <article class="step" id="s-network" data-view="network">
+        <p class="step-kicker">1 · A network expanded by contract</p>
+        <h2><span data-f="entrants" data-fmt="int"></span> private units in two years</h2>
+        <p>The backbone is about <span data-f="units_P_current" data-fmt="int"></span> <em>class P</em> units, mostly
+          sub-district health centres. Before fiscal 2024 a few thousand innovation units sat beside them. In fiscal 2024–25 another
+          <span data-f="entrants" data-fmt="int"></span> joined: <span data-f="entrants_nurse" data-fmt="int"></span> nurse clinics,
+          <span data-f="entrants_pharmacy" data-fmt="int"></span> pharmacies and <span data-f="entrants_doctor" data-fmt="int"></span> medical clinics.</p>
+        <p>The share of people with a unit within 1 km rose from <span data-f="within1_before" data-fmt="pct"></span>
+          to <span data-f="within1_peak" data-fmt="pct"></span>. Move the slider on the map to see the network fill in year by year.</p>
+        <p class="th" lang="th">ก่อนปีงบ 2567 เครือข่ายมีหน่วย class P ของรัฐเป็นหลัก กับหน่วยนวัตกรรมอีกไม่กี่พันแห่ง ปีงบ 2567–68 มีหน่วยเอกชนเข้าเพิ่ม
+          <span data-f="entrants" data-fmt="int"></span> แห่ง คนที่มีหน่วยในระยะ 1 กม. เพิ่มจาก <span data-f="within1_before" data-fmt="pct"></span>
+          เป็น <span data-f="within1_peak" data-fmt="pct"></span> เลื่อนแถบบนแผนที่เพื่อดูการขยายรายปี</p>
+        <p class="step-note">Early years undercount: units that left before November 2025 are in no registry snapshot we have.
+          <span class="th" lang="th">ปีแรก ๆ นับขาด เพราะหน่วยที่ออกไปก่อน พ.ย. 2568 ไม่อยู่ใน registry ชุดใดที่เรามี</span></p>
+      </article>
+
+      <article class="step" id="s-where" data-view="where">
+        <p class="step-kicker">2 · Where the new units went</p>
+        <h2>Nurse clinics went to poorer areas, pharmacies to richer ones</h2>
+        <p><span data-f="people_beyond2_P_pct" data-fmt="pct"></span> of people live more than 2 km from a class P unit.
+          Of the new nurse clinics, <span data-f="entrants_beyond2_nurse_pct" data-fmt="pct"></span> sit in such places;
+          of the new pharmacies, only <span data-f="entrants_beyond2_pharmacy_pct" data-fmt="pct"></span>.</p>
+        <p>Per 100,000 people, the poorest fifth got <span data-f="nurse_per_100k_Q1" data-fmt="dec1"></span> new nurse clinics and
+          the richest fifth <span data-f="nurse_per_100k_Q5" data-fmt="dec1"></span>. For pharmacies it is the other way round:
+          <span data-f="pharmacy_per_100k_Q1" data-fmt="dec1"></span> against <span data-f="pharmacy_per_100k_Q5" data-fmt="dec1"></span>.</p>
+        <p class="th" lang="th">คน <span data-f="people_beyond2_P_pct" data-fmt="pct"></span> อยู่ห่าง class P เกิน 2 กม. คลินิกการพยาบาลที่เข้าใหม่
+          <span data-f="entrants_beyond2_nurse_pct" data-fmt="pct"></span> ตั้งในพื้นที่แบบนี้ ส่วนร้านยามีแค่ <span data-f="entrants_beyond2_pharmacy_pct" data-fmt="pct"></span>
+          คลินิกการพยาบาลไปทางกลุ่มที่จน ร้านยาไปทางกลุ่มที่มีฐานะ</p>
+      </article>
+
+      <article class="step" id="s-exit" data-view="exit">
+        <p class="step-kicker">3 · Then half of them left</p>
+        <h2>By November 2026, <span data-f="left" data-fmt="int"></span> units were no longer innovation units</h2>
+        <p><span data-f="moved_to_Z" data-fmt="int"></span> of them are now registered as <em>class Z</em>, private clinics that take part in
+          some services but are not counted as primary-care access points here. Among the 2024–25 entrants,
+          <span data-f="entrants_left_pct_nurse" data-fmt="pct0"></span> of nurse clinics and <span data-f="entrants_left_pct_pharmacy" data-fmt="pct0"></span>
+          of pharmacies left.</p>
+        <p>The share of people within 1 km fell back to <span data-f="within1_current" data-fmt="pct"></span>:
+          <span data-f="lost_within1_m" data-fmt="m"></span> people lost what <span data-f="newly_within1_m" data-fmt="m"></span> had gained,
+          about <span data-f="lost_share_of_gain_1km" data-fmt="pct0"></span>.</p>
+        <p class="th" lang="th">ภายใน พ.ย. 2569 หน่วย <span data-f="left" data-fmt="int"></span> แห่งไม่อยู่ในประเภทหน่วยนวัตกรรมแล้ว
+          ในนี้ <span data-f="moved_to_Z" data-fmt="int"></span> แห่งย้ายไป class Z (คลินิกเอกชนที่เข้าร่วมบริการ) ซึ่งหน้านี้ไม่นับเป็นจุดบริการปฐมภูมิ
+          คนที่มีหน่วยในระยะ 1 กม. ลดกลับเหลือ <span data-f="within1_current" data-fmt="pct"></span> เท่ากับเสียไปราว
+          <span data-f="lost_share_of_gain_1km" data-fmt="pct0"></span> ของที่ได้มา ไม่ได้แปลว่าคลินิกปิด</p>
+      </article>
+
+      <article class="step" id="s-equity" data-view="equity">
+        <p class="step-kicker">4 · Who gained</p>
+        <h2>The gains went mostly to poorer areas, but the gap stays wide</h2>
+        <p>Ranking people by Meta's Relative Wealth Index, <span data-f="within2_current_Q1" data-fmt="pct"></span> of the poorest fifth
+          have a unit within 2 km, against <span data-f="within2_current_Q5" data-fmt="pct"></span> of the richest.</p>
+        <p>The concentration index of 2 km access (positive means it favours the better-off) fell from
+          <span data-f="ci2_before" data-fmt="dec3"></span> to <span data-f="ci2_peak" data-fmt="dec3"></span> with the expansion,
+          and rose again to <span data-f="ci2_current" data-fmt="dec3"></span> after the exits.</p>
+        <p class="th" lang="th">เมื่อเรียงคนตามดัชนีความมั่งคั่ง กลุ่มที่จนที่สุดมีหน่วยในระยะ 2 กม. <span data-f="within2_current_Q1" data-fmt="pct"></span>
+          กลุ่มที่รวยที่สุด <span data-f="within2_current_Q5" data-fmt="pct"></span> ดัชนีกระจุกตัวลดจาก <span data-f="ci2_before" data-fmt="dec3"></span>
+          เป็น <span data-f="ci2_peak" data-fmt="dec3"></span> แล้วกลับขึ้นเป็น <span data-f="ci2_current" data-fmt="dec3"></span></p>
+      </article>
+
+      <article class="step" id="s-far" data-view="far">
+        <p class="step-kicker">5 · Who is still far</p>
+        <h2>By motor vehicle almost everyone is close. On foot, the poor are not</h2>
+        <p>On the OpenStreetMap road network, <span data-f="drive15_current" data-fmt="pct"></span> of people can reach a unit within
+          15 minutes by motor vehicle. On foot, <span data-f="walk30_current" data-fmt="pct"></span> can within 30 minutes.</p>
+        <p>The poorest fifth walk <span data-f="walk_minutes_Q1" data-fmt="dec1"></span> minutes on average; the richest,
+          <span data-f="walk_minutes_Q5" data-fmt="dec1"></span>.</p>
+        <p class="th" lang="th">บนโครงข่ายถนน คน <span data-f="drive15_current" data-fmt="pct"></span> ขับรถถึงหน่วยใน 15 นาที แต่เดินถึงใน 30 นาทีได้
+          <span data-f="walk30_current" data-fmt="pct"></span> กลุ่มที่จนที่สุดเดินเฉลี่ย <span data-f="walk_minutes_Q1" data-fmt="dec1"></span> นาที
+          กลุ่มที่รวยที่สุด <span data-f="walk_minutes_Q5" data-fmt="dec1"></span> นาที</p>
+      </article>
+
+      <article class="step" id="s-avail" data-view="avail">
+        <p class="step-kicker">6 · Enough units for the people around them?</p>
+        <h2>Counting capacity flips the picture</h2>
+        <p>If each unit can serve only so many people (a two-step floating catchment index, 2 km), poorer areas have more units per
+          person: <span data-f="avail_Q1" data-fmt="dec2"></span> per 10,000 in the poorest fifth against
+          <span data-f="avail_Q5" data-fmt="dec2"></span> in the richest. Rural units serve few people; crowding is an urban problem.
+          But every unit counts the same here, a pharmacy as much as a health centre.</p>
+        <p class="th" lang="th">ถ้านับว่าหน่วยหนึ่งรับคนได้จำกัด กลุ่มจนมีหน่วยต่อคนมากกว่า (<span data-f="avail_Q1" data-fmt="dec2"></span> เทียบกับ
+          <span data-f="avail_Q5" data-fmt="dec2"></span> หน่วยต่อหมื่นคน) แต่ทุกหน่วยนับเท่ากัน ร้านยาเท่ากับ รพ.สต.</p>
+      </article>
+
+      <article class="step" id="s-planner" data-view="planner">
+        <p class="step-kicker">7 · If the state had planned</p>
+        <h2>A planner would have reached <span data-f="planner_over_market" data-fmt="dec1"></span> times as many people</h2>
+        <p>Starting from the network before 2024 and placing the same <span data-f="entrants" data-fmt="int"></span> units to cover as many
+          uncovered people as possible (a maximal covering model), a planner brings <span data-f="planner_newly_within2_m" data-fmt="m"></span>
+          people within 2 km. The real entrants brought <span data-f="market_newly_within2_m" data-fmt="m"></span>.</p>
+        <p>The planner matches the market's gain with <span data-f="planner_sites_to_match" data-fmt="int"></span> sites.</p>
+        <p class="th" lang="th">ถ้าวางหน่วย <span data-f="entrants" data-fmt="int"></span> แห่งเท่ากันเพื่อให้ครอบคลุมคนที่ยังไม่มีหน่วยมากที่สุด จะพาคนเข้าระยะ 2 กม. ได้
+          <span data-f="planner_newly_within2_m" data-fmt="mth"></span> คน ส่วนหน่วยที่เข้าจริงได้ <span data-f="market_newly_within2_m" data-fmt="mth"></span> คน
+          และผู้วางแผนใช้แค่ <span data-f="planner_sites_to_match" data-fmt="int"></span> แห่งก็ได้เท่าของจริง</p>
+      </article>
+
+      <article class="step" id="s-next" data-view="next">
+        <p class="step-kicker">8 · Where the next public units could go</p>
+        <h2>The first hundred sites are peri&#8209;urban</h2>
+        <p><span data-f="beyond2_current_m" data-fmt="m"></span> people now live more than 2 km from any unit. One hundred new public units in the
+          best places would bring <span data-f="policy_100_m" data-fmt="m"></span> of them within reach; five hundred,
+          <span data-f="policy_500_m" data-fmt="m"></span>. Many of the first sites are in the industrial belt around Bangkok and the
+          Eastern Seaboard, where some residents are migrant workers or use social security rather than the scheme.</p>
+        <p class="th" lang="th">ตอนนี้มีคน <span data-f="beyond2_current_m" data-fmt="mth"></span> คนอยู่ห่างหน่วยเกิน 2 กม. หน่วยรัฐใหม่ 100 แห่งในจุดที่ดีที่สุดพาคนเข้าระยะได้
+          <span data-f="policy_100_m" data-fmt="mth"></span> คน 500 แห่งได้ <span data-f="policy_500_m" data-fmt="mth"></span> คน จุดแรก ๆ อยู่เขตเมืองรอบนอกและเขตอุตสาหกรรม
+          ซึ่งคนส่วนหนึ่งอาจเป็นแรงงานข้ามชาติหรือใช้สิทธิประกันสังคม</p>
+      </article>
+    </div>
+
+    <div class="stage">
+      <div class="panel map-panel" id="map-panel">
+        <div id="map" role="region" aria-label="Map"></div>
+        <div class="map-legend" id="map-legend"></div>
+        <div class="map-control" id="year-control">
+          <label for="year">Network in <strong id="year-label"></strong></label>
+          <input id="year" type="range" min="0" max="6" step="1" value="5">
+          <div class="ticks" aria-hidden="true"><span>FY 2020</span><span>Nov 2026</span></div>
         </div>
-
-        <p class="description">
-          Estimated population living within <strong><span id="sidebar-radius">1.0</span> km</strong>
-          of a primary care facility, by facility type.
-        </p>
-
-        <div class="kpi-grid">
-          <div class="stat-tile hero">
-            <div class="stat-label"><span class="stat-dot total"></span>All facility types</div>
-            <div class="stat-value"><span id="coverage">—</span><span class="unit">people</span></div>
-          </div>
-          <div class="stat-tile">
-            <div class="stat-label"><span class="stat-dot public"></span>Public only</div>
-            <div class="stat-value"><span id="coverage-public">—</span></div>
-          </div>
-          <div class="stat-tile">
-            <div class="stat-label">Non-public gap</div>
-            <div class="stat-value"><span id="coverage-gap">—</span></div>
+        <div class="map-control" id="exit-control" hidden>
+          <span class="ctl-label" id="exit-label">Show</span>
+          <div class="seg" role="group" aria-labelledby="exit-label">
+            <button data-show="now" aria-pressed="true">Network now</button><button data-show="left" aria-pressed="false">What left</button>
           </div>
         </div>
-
-        <div class="chart-wrap">
-          <div class="section-label">Population covered, by radius</div>
-          <div class="chart-canvas-wrap">
-            <canvas id="coverage-chart"></canvas>
-          </div>
-          <div class="chart-legend">
-            <span class="key"><span class="swatch" style="background:var(--series-total)"></span>All facility types</span>
-            <span class="key"><span class="swatch" style="background:var(--series-public)"></span>Public only</span>
-            <span class="key"><span class="swatch dashed"></span>Non-public gap</span>
+        <div class="map-control" id="sites-control" hidden>
+          <span class="ctl-label" id="sites-label">New public units</span>
+          <div class="seg" role="group" aria-labelledby="sites-label">
+            <button data-k="50" aria-pressed="false">50</button><button data-k="100" aria-pressed="true">100</button><button data-k="500" aria-pressed="false">500</button>
           </div>
         </div>
       </div>
-    </aside>
-
-    <div id="radius-control">
-      <div class="radius-readout">Radius: <strong><span id="radius-label">1.0</span> km</strong></div>
-      <input id="radius-slider" type="range" min="0" max="0" step="1" value="0" />
-      <div class="radius-hint">Zoom in to see coverage circles</div>
-    </div>
-
-    <div id="filters">
-      <div class="filters-panel">
-        <label><input type="checkbox" id="cb-public" class="fp-public" checked><span class="type-dot fp-public"></span>Public primary care facilities</label>
-        <label><input type="checkbox" id="cb-pharm" class="fp-pharm" checked><span class="type-dot fp-pharm"></span>Pharmacy</label>
-        <label><input type="checkbox" id="cb-nurse" class="fp-nurse" checked><span class="type-dot fp-nurse"></span>Nurse and Midwife clinic</label>
-        <label><input type="checkbox" id="cb-doctor" class="fp-doctor" checked><span class="type-dot fp-doctor"></span>Private medical clinic</label>
-        <label><input type="checkbox" id="cb-other" class="fp-other" checked><span class="type-dot fp-other"></span>Others</label>
+      <div class="panel chart-panel" id="chart-panel">
+        <div class="chart-head"><p class="chart-title" id="chart-title" aria-live="polite"></p><span class="step-count" id="step-count"></span></div>
+        <div class="chart-box"><canvas id="chart" role="img" aria-label=""></canvas></div>
+        <p class="chart-note" id="chart-note"></p>
       </div>
     </div>
-  </div>
+  </main>
 
-  <!-- libs -->
+  <section class="methods container" id="methods">
+    <h2>Methods and limits</h2>
+    <p class="th" lang="th">วิธีและข้อจำกัด</p>
+    <div class="cols">
+      <div>
+        <h3>Data</h3>
+        <ul>
+          <li>Facilities: NHSO unit registry, snapshots of <span data-f="registry_old" data-fmt="raw"></span> and <span data-f="registry_new" data-fmt="raw"></span>.
+            Primary-care units are class P plus the contracted pharmacies, nurse clinics and medical clinics (innovation units; codes R0211/R0311, R0213/R0313, R0207/R0307).
+            Prison health units and class Z are not counted.</li>
+          <li>Every coordinate was checked against the unit's registered tambon; coordinates more than 2 km off were replaced by the other snapshot's,
+            or by the population-weighted centre of the tambon (flagged).</li>
+          <li>Population: WorldPop 2020, 100 m, UN-adjusted, constrained (<span data-f="population_m" data-fmt="dec1"></span> million).</li>
+          <li>Roads: OpenStreetMap via Geofabrik, November 2026. Wealth: Meta Relative Wealth Index, 2.4 km tiles, 2021.
+            Boundaries: OCHA/RTSD via HDX.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Methods</h3>
+        <ul>
+          <li>Distance: every populated 100 m cell to its nearest unit (straight line). Replaces the earlier ArcGIS buffer run, which it reproduces to within 1.7%.</li>
+          <li>Travel time: shortest paths on the road graph, with assumed speeds by road class; walking at 5 km/h on every road.</li>
+          <li>Equity: people ranked by wealth; concentration index; units per 100,000 people by wealth fifth.</li>
+          <li>Availability: Gaussian two-step floating catchment (Luo &amp; Qi 2009; Dai 2010), 2 km, equal capacity.</li>
+          <li>Planner: greedy maximal covering location model (Church &amp; ReVelle 1974), 2 km, candidate sites at the centre of uncovered people in each H3 resolution-8 hexagon.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Limits</h3>
+        <ul>
+          <li>Straight-line distance and assumed speeds, not observed travel. No one-way streets, turns or traffic.</li>
+          <li>Entry year is the start of the contract held in November 2025; units that left before then are not seen.</li>
+          <li>Leaving the innovation-unit classes is not closing: most units moved to class Z.</li>
+          <li>Population is for 2020 and counts everyone, including people outside the scheme.</li>
+          <li>All numbers are preliminary; the working paper is in preparation.</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Data on this page</h3>
+    <p class="downloads"><a href="data/hex6.json">hexagons (JSON)</a> · <a href="data/units.csv">units (CSV)</a> · <a href="data/sites.csv">planner sites (CSV)</a> · <a href="data/charts.json">chart series (JSON)</a> · <a href="data/facts.json">numbers in the text (JSON)</a></p>
+    <h3>Contact and citation</h3>
+    <p class="downloads">Cite as: Sitthirat P, et al. Who the market reached: contracted private primary care and spatial access in Thailand, 2024–2026. Working paper in preparation; 2026. Interactive dashboard: https://ramathibodi-hpsr.github.io/thailand-primary-care/</p>
+    <p class="downloads">Questions and corrections: open an issue on <a href="https://github.com/Ramathibodi-HPSR/thailand-primary-care/issues">the project repository</a>.</p>
+    <p class="credits">Province boundaries: OCHA/RTSD via HDX. Road data © OpenStreetMap contributors (ODbL). Population © WorldPop (CC BY 4.0).
+      Relative Wealth Index: Chi et al. 2022, PNAS 119(3): e2113658119 (CC BY-NC 4.0). Code: <a href="https://github.com/Ramathibodi-HPSR/thailand-primary-care">Ramathibodi-HPSR/thailand-primary-care</a>.</p>
+  </section>
+
+  <div id="tip" role="tooltip" hidden></div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
-  <!-- app -->
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/h3-js@4.1.0/dist/h3-js.umd.js"></script>
+  <script src="app.js?v=14"></script>
 </body>
 </html>

@@ -2,3 +2,7 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# pipeline outputs, rebuilt by scripts/v2/build_v2.py
+data/interim/
+data/processed/

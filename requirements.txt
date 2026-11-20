@@ -1,2 +1,13 @@
-pandas>=2.2
-pyarrow>=15.0
+# Tested on Python 3.14.6 (20 Nov 2026). Run: python scripts/v2/build_v2.py
+pandas==3.1.1
+pyarrow==26.0.1
+numpy==2.5.5
+geopandas==1.2.0
+pyogrio==0.13.0
+pyproj==3.8.0
+rasterio==1.5.2
+scipy==1.18.1
+shapely==2.2.0
+h3==4.5.1
+
+osmium==4.3.2

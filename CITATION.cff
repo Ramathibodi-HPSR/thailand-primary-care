@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this pipeline, its data or the dashboard, please cite the archived release below."
+type: software
+title: "Who the Market Reached: Thailand Primary Care Access"
+abstract: >-
+  Pipeline and interactive dashboard on primary-care access in Thailand,
+  2024–2026. In fiscal years 2024–25 the Universal Coverage Scheme grew its
+  primary-care network by contracting private nurse clinics, pharmacies and
+  medical clinics ("innovation units") instead of building public units. The
+  repository tests where those units went, who they reached, and how a
+  coverage-maximising planner would have done with the same number of sites.
+  All numbers are preliminary.
+authors:
+  - family-names: Sitthirat
+    given-names: Peerasit
+    orcid: "https://orcid.org/0000-0002-7984-4745"
+    affiliation: "Chakri Naruebodindra Medical Institute, Faculty of Medicine Ramathibodi Hospital, Mahidol University"
+version: "1.1"
+license: MIT
+repository-code: "https://github.com/Ramathibodi-HPSR/thailand-primary-care"
+url: "https://ramathibodi-hpsr.github.io/thailand-primary-care/"
+keywords:
+  - primary care
+  - spatial access
+  - Universal Coverage Scheme
+  - health facilities
+  - gridded population
+  - Thailand
